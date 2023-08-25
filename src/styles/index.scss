@@ -1,0 +1,31 @@
+@import 'resets';
+@import 'fonts';
+@import 'variables';
+
+body {
+  margin: 0;
+  font-family: 'Satoshi-Medium', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: $black0;
+}
+
+* {
+  font-family: 'Satoshi-Medium', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif;
+}
+
+.wrapper {
+  max-width: 1920px;
+  margin: 0 auto;
+
+  .content {
+    background-color: #F6FEFE;
+    box-shadow: 0px 8px 24px -4px rgba(173, 176, 184, 0.08), 0px 6px 12px -6px rgba(173, 176, 184, 0.12);
+    height: 90vh;
+    padding: 40px 24px;
+  }
+}

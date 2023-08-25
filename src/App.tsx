@@ -1,25 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {FC} from 'react';
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import {Grid} from "@mui/material";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Sidebar from "./modules/sidebar/Sidebar";
+import Footer from "./modules/footer/Footer";
+import {menus} from "./api/menu";
+import {footerMenus} from "./api/footerMenu";
+import './styles/App.scss';
 
-function App() {
+const App: FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <React.Fragment>
+      <BrowserRouter>
+        <div className="wrapper">
+          <Grid container columnSpacing={3}>
+            <Grid item xs={2}>
+              <Sidebar menus={menus}/>
+            </Grid>
+            <Grid item xs={10}>
+              <Routes>
+                <Route path="/" element={<Home/>}></Route>
+                <Route path="about" element={<About/>}/>
+              </Routes>
+            </Grid>
+          </Grid>
+        </div>
+        <Footer menus={footerMenus}/>
+      </BrowserRouter>
+
+    </React.Fragment>
   );
 }
 
