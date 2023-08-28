@@ -1,9 +1,9 @@
 import React, {FC} from "react";
 import SidebarMenuItem from "./SidebarMenuItem";
-import {IMenu} from "../../../types/IMenu";
+import {ISidebarMenu} from "../types/ISidebarMenu";
 
 interface ISidebarMenuListProps {
-  menuList: IMenu[],
+  menuList: ISidebarMenu[],
 }
 
 const SidebarMenuList: FC<ISidebarMenuListProps> = (props) => {

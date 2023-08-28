@@ -16,16 +16,41 @@ body {
   font-family: 'Satoshi-Medium', 'Roboto', 'Oxygen',
   'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
   sans-serif;
+  transition: all 0.2s ease-in-out;
 }
 
 .wrapper {
   max-width: 1920px;
   margin: 0 auto;
 
-  .content {
+  .content-area {
     background-color: #F6FEFE;
     box-shadow: 0px 8px 24px -4px rgba(173, 176, 184, 0.08), 0px 6px 12px -6px rgba(173, 176, 184, 0.12);
-    height: 90vh;
     padding: 40px 24px;
+  }
+}
+
+.icon {
+  background-repeat: no-repeat;
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+}
+
+.standard-input {
+  width: 100%;
+  border: 1px solid $blue2;
+  height: 48px;
+  padding: 12px 16px 12px 56px;
+  border-radius: 8px 0 0 8px;
+  background-color: $blue1;
+  background-repeat: no-repeat;
+  background-position: 16px 12px;
+  background-size: 24px 24px;
+
+  &::placeholder {
+    color: $black3;
+    opacity: 1;
+    font-family: 'Satoshi-Light', serif;
   }
 }

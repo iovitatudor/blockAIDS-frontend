@@ -1,4 +1,4 @@
-export interface IMenu {
+export interface ISidebarMenu {
   id: number,
   name: string,
   icon: string,

@@ -1,0 +1,216 @@
+@import '../../../styles/variables';
+@import '../../../styles/fonts';
+
+
+.tasks-area {
+  margin-top: 16px;
+  border-radius: 8px;
+  border: 1px solid $black1;
+  background-color: $black0;
+  padding: 40px 0;
+  box-shadow: 0px 8px 24px -4px rgba(173, 176, 184, 0.08), 0px 6px 12px -6px rgba(173, 176, 184, 0.12);
+
+  .tasks-head {
+    display: flex;
+    justify-content: space-between;
+    background-color: $blue1;
+
+    .tasks-head-item {
+      padding: 16px 32px;
+      font-family: 'Satoshi-Bold', serif;
+      font-size: 16px;
+      min-width: 5%;
+    }
+  }
+
+  .tasks-body {
+    display: flex;
+    justify-content: space-between;
+    background-color: $black0;
+    border-bottom: 1px solid $black1;
+
+    .tasks-body-item {
+      display: flex;
+      align-items: center;
+      padding: 16px 32px;
+      min-width: 5%;
+      color: $black3;
+      font-size: 16px;
+
+      .avatar {
+        margin-right: 20px;
+      }
+
+      .details {
+        cursor: pointer;
+        position: relative;
+        text-align: center;
+        -webkit-transform: translateZ(0); /* webkit flicker fix */
+        -webkit-font-smoothing: antialiased; /* webkit text rendering fix */
+
+        .tooltip {
+          background: #FFF;
+          color: $blue3;
+          display: block;
+          right: -20px;
+          bottom: -50px;
+          margin-bottom: 15px;
+          opacity: 0;
+          pointer-events: none;
+          position: absolute;
+          width: 200px;
+          transform: translateY(10px);
+          transition: all .25s ease-out;
+          box-shadow: 0px 8px 24px -4px rgba(173, 176, 184, 0.08), 0px 6px 12px -6px rgba(173, 176, 184, 0.12);
+          padding: 8px;
+          border-radius: 4px;
+        }
+
+        .tooltip:before {
+          bottom: -20px;
+          content: " ";
+          display: block;
+          height: 20px;
+          left: 0;
+          position: absolute;
+          width: 100%;
+        }
+
+        &:hover .tooltip {
+          opacity: 1;
+          pointer-events: auto;
+          transform: translateY(0px);
+        }
+      }
+    }
+
+    .badge {
+      padding: 8px 16px;
+      border-radius: 16px;
+    }
+
+    .badge-undone {
+      background-color: $red15;
+      color: $red3;
+    }
+
+    .badge-done {
+      background-color: $green15;
+      color: $green3;
+    }
+
+    .badge-overdue {
+      background-color: $orange0;
+      color: $orange3;
+    }
+
+    .badge-progress {
+      background-color: $blue15;
+      color: $blue3;
+    }
+  }
+
+  .lg {
+    width: 30% !important;
+  }
+
+  .md {
+    width: 20% !important;
+  }
+
+  .sm {
+    width: 13.2% !important;
+  }
+
+  .xs {
+    width: 5% !important;
+  }
+}
+
+.tasks-top-options {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding-left: 32px;
+
+  .tasks-filter {
+    display: flex;
+
+    .filter-option {
+      border-radius: 8px;
+      padding: 5px 9px;
+      border: 1px solid $blue3;
+      margin-right: 8px;
+      color: $blue3;
+      font-size: 14px;
+      cursor: pointer;
+
+      span {
+        background-color: $blue3;
+        color: $blue0;
+        padding: 3px 8px;
+        border-radius: 50%;
+        font-size: 10px;
+      }
+
+      &:hover {
+        background-color: $blue3;
+        color: $blue0;
+
+        span {
+          color: $blue3;
+          background-color: $blue0;
+        }
+      }
+    }
+
+    .active-option {
+      background-color: $blue3;
+      color: $blue0;
+
+      span {
+        color: $blue3;
+        background-color: $blue0;
+      }
+    }
+  }
+
+  .tasks-calendar {
+    margin-right: 32px;
+
+    p {
+      color: $black3;
+      font-family: 'Satoshi-Bold', serif;
+      font-size: 18px;
+      cursor: pointer;
+
+      display: flex;
+      align-items: center;
+
+      .icon {
+        background-image: url("../assets/calendar-icon.png");
+        margin-right: 8px;
+      }
+    }
+  }
+}
+
+.task-options {
+  margin-top: 40px;
+
+  .add-new-task-btn {
+    background-color: $blue3;
+    padding: 16px 32px;
+    border-radius: 8px;
+    color: $blue1;
+    font-size: 18px;
+    font-family: 'Satoshi-Bold', serif;
+    display: flex;
+    cursor: pointer;
+
+    .icon {
+      background-image: url("../assets/addNewTaskBtnIcon.png");
+      margin-right: 8px;
+    }
+  }
+}

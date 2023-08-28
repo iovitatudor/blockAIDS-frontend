@@ -1,17 +1,17 @@
 import React, {FC} from "react";
 import {Grid} from "@mui/material";
-import "./styles/Footer.scss";
-import FooterLogo from "./components/FooterLogo";
-import FooterContacts from "./components/FooterContacts";
-import FooterMenuList from "./components/FooterMenuList";
-import {IFooterMenus} from "../../types/IFooterMenu";
-import FooterCopyright from "./components/FooterCopyright";
+import "../styles/Footer.scss";
+import FooterLogo from "./FooterLogo";
+import FooterContacts from "./FooterContacts";
+import FooterMenuList from "./FooterMenuList";
+import {IFooterMenus} from "../types/IFooterMenu";
+import FooterCopyright from "./FooterCopyright";
 
 interface IFooterProps {
   menus: IFooterMenus[],
 }
 
-const Footer: FC<IFooterProps> = (props) => {
+const FooterWidget: FC<IFooterProps> = (props) => {
   return (
     <footer>
       <div className="footer-inside">
@@ -33,4 +33,4 @@ const Footer: FC<IFooterProps> = (props) => {
   );
 }
 
-export default Footer
+export default FooterWidget

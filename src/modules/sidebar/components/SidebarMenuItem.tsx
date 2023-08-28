@@ -1,9 +1,9 @@
 import React, {FC} from "react";
 import {Link} from "react-router-dom";
-import {IMenu} from "../../../types/IMenu";
+import {ISidebarMenu} from "../types/ISidebarMenu";
 
 interface ISidebarMenuItem {
-  menu: IMenu
+  menu: ISidebarMenu
 }
 const SidebarMenuItem: FC<ISidebarMenuItem> = ({menu}) => {
   return (

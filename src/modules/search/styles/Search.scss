@@ -1,0 +1,15 @@
+@import "../../../styles/variables";
+
+.search-fields {
+  display: flex;
+
+  .search-btn {
+    width: 100px;
+    height: 48px;
+    text-align: center;
+    background-color: $blue3;
+    color: $blue1;
+    border-radius: 0px 8px 8px 0px;
+    cursor: pointer;
+  }
+}

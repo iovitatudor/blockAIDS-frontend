@@ -1,6 +1,6 @@
 import React, {FC} from "react";
 import FooterMenuItem from "./FooterMenuItem";
-import {IFooterMenus} from "../../../types/IFooterMenu";
+import {IFooterMenus} from "../types/IFooterMenu";
 
 interface IFooterMenuList {
   menuList: IFooterMenus

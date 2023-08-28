@@ -1,0 +1,25 @@
+@import "../../../styles/variables";
+
+.breadcrumbs-area {
+  border-top: 1px solid $blue1;
+  margin-top: 24px;
+  padding-top: 40px;
+  font-size: 16px;
+  display: flex;
+
+  span {
+    margin: 0 8px;
+  }
+
+  a {
+    color: $black5;
+
+    &:hover {
+      color: $black2;
+    }
+  }
+
+  .active {
+    color: $black2;
+  }
+}

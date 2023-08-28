@@ -1,5 +1,5 @@
 import React, {FC} from "react";
-import {IFooterMenu} from "../../../types/IFooterMenu";
+import {IFooterMenu} from "../types/IFooterMenu";
 import {Link} from "react-router-dom";
 
 interface IFooterMenuItemProps {

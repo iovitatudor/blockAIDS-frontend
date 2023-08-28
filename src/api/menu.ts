@@ -1,5 +1,6 @@
-import {IMenu} from "../types/IMenu";
-export const menus: IMenu[] = [
+import {ISidebarMenu} from "../modules/sidebar";
+
+export const menus: ISidebarMenu[] = [
   {
     id: 1,
     name: 'Home',
