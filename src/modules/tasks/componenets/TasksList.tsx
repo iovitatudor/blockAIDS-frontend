@@ -1,21 +1,35 @@
 import React, {FC} from "react";
 import '../styles/Task.scss';
 import TasksItem from "./TasksItem";
+import {Link} from "react-router-dom";
+import arrowRight from "../assets/arrowRight.svg";
 
 interface ITasksList {
-  Filter: React.ComponentType;
-  Calendar: React.ComponentType;
+  heading?: string;
+  Filter?: React.ComponentType;
+  Calendar?: React.ComponentType;
 }
 
 const TasksList: FC<ITasksList> = (props) => {
-  const {Filter, Calendar} = props;
+  const {Filter, Calendar, heading} = props;
 
   return (
     <>
       <div className="tasks-area">
+        {heading && (
+          <div className="tasks-title">
+            <div><h3>Tasks</h3></div>
+            <div>
+              <Link to="/tasks">
+                Show all
+                <i className="icon" style={{backgroundImage: `url(${arrowRight})`}}></i>
+              </Link>
+            </div>
+          </div>
+        )}
         <div className="tasks-top-options">
-          <Filter/>
-          <Calendar/>
+          {Filter && <Filter/>}
+          {Calendar && <Calendar/>}
         </div>
         <div className="tasks-head">
           <div className="tasks-head-item lg">Author</div>
@@ -28,10 +42,12 @@ const TasksList: FC<ITasksList> = (props) => {
         <TasksItem/>
       </div>
       <div className="task-options">
-        <button className="add-new-task-btn">
-          <i className="icon"></i>
-          Add new task
-        </button>
+        <Link to="/tasks/create">
+          <button className="add-new-task-btn">
+            <i className="icon"></i>
+            Add new task
+          </button>
+        </Link>
       </div>
     </>
   );

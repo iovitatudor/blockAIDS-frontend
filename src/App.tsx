@@ -1,13 +1,17 @@
 import React, {FC} from 'react';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import {Grid} from "@mui/material";
-import Home from "./pages/Home";
-import About from "./pages/About";
 import {Sidebar} from "./modules/sidebar";
 import {Footer} from "./modules/footer";
+import Layout from "./components/Layout";
+import Home from "./pages/Home";
+import TaskCreate from "./pages/TaskCreate";
+import TaskView from "./pages/TaskView";
+import TaskUpdate from "./pages/TaskUpdate";
+import Tasks from "./pages/Tasks";
+import Profile from "./pages/Profile";
 import {menus} from "./api/menu";
 import {footerMenus} from "./api/footerMenu";
-import Layout from "./components/Layout";
 
 const App: FC = () => {
   return (
@@ -21,8 +25,12 @@ const App: FC = () => {
             <Grid item xs={10}>
               <Layout>
                 <Routes>
-                  <Route path="/" element={<Home/>}></Route>
-                  <Route path="about" element={<About/>}/>
+                  <Route path="/" element={<Home/>}/>
+                  <Route path="/tasks" element={<Tasks/>}/>
+                  <Route path="/tasks/view" element={<TaskView/>}/>
+                  <Route path="/tasks/create" element={<TaskCreate/>}/>
+                  <Route path="/tasks/update" element={<TaskUpdate/>}/>
+                  <Route path="/profile" element={<Profile/>}/>
                 </Routes>
               </Layout>
             </Grid>

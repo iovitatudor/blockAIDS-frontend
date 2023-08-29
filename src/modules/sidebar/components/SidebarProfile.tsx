@@ -7,13 +7,13 @@ const SidebarProfile: FC = () => {
     <div className="profile-wrapper">
       <Grid container spacing={0}>
         <Grid item xs={3} className="avatar-area">
-          <Link to="/">
+          <Link to="/profile">
             <Avatar alt="Remy Sharp" src="/images/temporary/user-avatar.png" sx={{width: 60, height: 60}}/>
           </Link>
         </Grid>
         <Grid item xs={7} className="info-area">
           <p className="user-name">
-            <Link to="/">
+            <Link to="/profile">
               Wade Warren
             </Link>
           </p>

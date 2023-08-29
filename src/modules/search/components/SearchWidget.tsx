@@ -1,6 +1,8 @@
 import React, {ChangeEvent, FC, FormEvent, useState} from "react";
-import Input from "../../../ui/Input";
+import MyInput from "../../../ui/MyInput";
 import '../styles/Search.scss';
+import searchIcon from "../assets/search-icon.png";
+
 
 const SearchWidget: FC = () => {
   const [searchField, setSearchField] = useState('')
@@ -18,10 +20,11 @@ const SearchWidget: FC = () => {
     <div className="search-area">
       <form onSubmit={handleSubmit}>
         <div className="search-fields">
-          <Input
+          <MyInput
             type="text"
             value={searchField}
             name="name"
+            icon={searchIcon}
             placeholder="Search something..."
             onChange={handleSearchField}
           />

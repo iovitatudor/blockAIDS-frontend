@@ -54,3 +54,78 @@ body {
     font-family: 'Satoshi-Light', serif;
   }
 }
+
+.standard-select {
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid $blue2;
+  background-color: $blue1;
+  padding-left: 32px;
+  background-repeat: no-repeat;
+  background-position: 8px center;
+  background-size: 24px 24px;
+  margin: 0 0 32px 0;
+
+  em {
+    color: $black3;
+    font-size: 16px;
+    font-family: 'Satoshi-Light', serif;
+  }
+}
+
+.standard-textarea {
+  width: 100%;
+  min-height: 112px;
+  border: 1px solid $blue3;
+  border-radius: 8px;
+  padding: 15px;
+  color: $black5;
+}
+
+.standard-label {
+  color: $black5 !important;
+  font-family: Satoshi-Light, serif !important;
+  font-size: 16px !important;
+  line-height: normal !important;
+  margin-bottom: 8px !important;
+  display: flex !important;
+}
+
+.standard-button {
+  cursor: pointer;
+  border-radius: 8px;
+  background: $blue3;
+  border: 2px solid $blue3;
+  color: $blue1;
+  padding: 14px 62px;
+  font-size: 18px;
+  font-family: 'Satoshi-Bold', serif;
+
+  &:hover {
+    background: $black0;
+    color: $blue3;
+  }
+}
+
+.btn-outlined {
+  cursor: pointer;
+  border-radius: 8px;
+  background: $black0;
+  border: 2px solid $blue3;
+  color: $blue3;
+  padding: 14px 62px;
+  font-size: 18px;
+  font-family: 'Satoshi-Bold', serif;
+
+  &:hover {
+    background: $blue3;
+    color: $black0;
+  }
+}
+
+.css-vqmohf-MuiButtonBase-root-MuiRadio-root {
+  color: $blue3 !important;
+}
+.css-vqmohf-MuiButtonBase-root-MuiRadio-root.Mui-checked {
+  color: $blue3 !important;
+}
