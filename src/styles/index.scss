@@ -123,9 +123,42 @@ body {
   }
 }
 
+.btn-sm {
+  cursor: pointer;
+  border-radius: 8px;
+  background: $blue3;
+  border: 2px solid $blue3;
+  color: $black0;
+  padding: 8px 32px;
+  font-size: 14px;
+  font-family: 'Satoshi-Bold', serif;
+
+  &:hover {
+    background: $black0;
+    color: $blue3;
+  }
+}
+
+.btn-outlined-sm {
+  cursor: pointer;
+  border-radius: 8px;
+  background: $black0;
+  border: 2px solid $blue3;
+  color: $blue3;
+  padding: 8px 32px;
+  font-size: 14px;
+  font-family: 'Satoshi-Bold', serif;
+
+  &:hover {
+    background: $blue3;
+    color: $black0;
+  }
+}
+
 .css-vqmohf-MuiButtonBase-root-MuiRadio-root {
   color: $blue3 !important;
 }
+
 .css-vqmohf-MuiButtonBase-root-MuiRadio-root.Mui-checked {
   color: $blue3 !important;
 }
