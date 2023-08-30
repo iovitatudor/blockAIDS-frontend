@@ -7,6 +7,7 @@ import userIcon from "../assets/userIcon.svg";
 import emailIcon from "../assets/emailIcon.svg";
 import phoneIcon from "../assets/phoneIcon.svg";
 import calendarIcon from "../assets/calendarIcon.svg";
+import ProfileImage from "./ProfileImage";
 
 const ProfileWidget: FC = () => {
   const [value, setValue] = React.useState('female');
@@ -17,14 +18,19 @@ const ProfileWidget: FC = () => {
 
   return (
     <div className="profile-area">
+
       <div className="profile-picture">
         <div className="avatar">
           <Avatar sx={{width: '120px', height: '120px'}}></Avatar>
         </div>
         <div className="upload-form">
           <h3>Profile Picture</h3>
-          <MyButton>Upload image</MyButton>
+          {/*<MyButton>Upload image</MyButton>*/}
+          <ProfileImage/>
         </div>
+      </div>
+      <div>
+
       </div>
 
       <Grid container spacing={3} className="profile-fields">
@@ -62,6 +68,8 @@ const ProfileWidget: FC = () => {
           </Stack>
         </Grid>
       </Grid>
+
+
     </div>
   );
 }
