@@ -65,7 +65,9 @@
       .details {
         cursor: pointer;
         position: relative;
-        text-align: center;
+        text-align: right;
+        width: 100%;
+        justify-content: right;
         -webkit-transform: translateZ(0); /* webkit flicker fix */
         -webkit-font-smoothing: antialiased; /* webkit text rendering fix */
 
@@ -132,19 +134,23 @@
   }
 
   .lg {
-    width: 26% !important;
+    //width: 26% !important;
+    width: 280px !important;
   }
 
   .md {
-    width: 22% !important;
+    //width: 22% !important;
+    width: 230px !important;
   }
 
   .sm {
-    width: 15% !important;
+    //width: 15% !important;
+    width: 130px !important;
   }
 
   .xs {
-    width: 5% !important;
+    //width: 5% !important;
+    width: 60px !important;
   }
 }
 

@@ -1,5 +1,5 @@
 import React, {FC} from "react";
-import {Avatar} from "@mui/material";
+import {Avatar, Typography} from "@mui/material";
 import verticalDots from "../assets/verticalDots.png";
 import {Link} from "react-router-dom";
 
@@ -21,7 +21,9 @@ const TasksItem: FC = () => {
         <div className="details">
           <img src={verticalDots} alt="" height="24px" width="auto"/>
           <div className="tooltip">
-            <Link to="/tasks/view">View Task</Link>
+            <Link to="/tasks/view">
+              View Task
+            </Link>
           </div>
         </div>
       </div>
