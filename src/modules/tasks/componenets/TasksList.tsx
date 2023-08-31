@@ -39,7 +39,12 @@ const TasksList: FC<ITasksList> = (props) => {
           <div className="tasks-head-item sm">Status</div>
           <div className="tasks-head-item xs"></div>
         </div>
-        <TasksItem/>
+        <div className="tasks-body-wrapper">
+          <TasksItem/>
+          <TasksItem/>
+          <TasksItem/>
+          <TasksItem/>
+        </div>
       </div>
       <div className="task-options">
         <Link to="/tasks/create">

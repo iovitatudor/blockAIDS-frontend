@@ -174,3 +174,26 @@ body {
 .css-vqmohf-MuiButtonBase-root-MuiRadio-root.Mui-checked {
   color: $blue3 !important;
 }
+
+.mobile-header {
+  display: none;
+}
+
+@media only screen and (max-width: 1279px) {
+  #root {
+    background-color: $blue0;
+  }
+  .wrapper {
+    flex-direction: column;
+
+    .content-area {
+      box-shadow: none;
+      padding: 0;
+    }
+  }
+  .mobile-header {
+    display: flex;
+    justify-content: center;
+    padding: 24px;
+  }
+}
