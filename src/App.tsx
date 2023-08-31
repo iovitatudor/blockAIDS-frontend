@@ -18,23 +18,39 @@ const App: FC = () => {
     <React.Fragment>
       <BrowserRouter>
         <div className="wrapper">
-          <Grid container spacing={2}>
-            <Grid item xs={2}>
-              <Sidebar menus={menus}/>
-            </Grid>
-            <Grid item xs={10}>
-              <Layout>
-                <Routes>
-                  <Route path="/" element={<Home/>}/>
-                  <Route path="/tasks" element={<Tasks/>}/>
-                  <Route path="/tasks/view" element={<TaskView/>}/>
-                  <Route path="/tasks/create" element={<TaskCreate/>}/>
-                  <Route path="/tasks/update" element={<TaskUpdate/>}/>
-                  <Route path="/profile" element={<Profile/>}/>
-                </Routes>
-              </Layout>
-            </Grid>
-          </Grid>
+          <aside className="sidebar-area">
+            <Sidebar menus={menus}/>
+          </aside>
+          <main className="main-area">
+            <Layout>
+              <Routes>
+                <Route path="/" element={<Home/>}/>
+                <Route path="/tasks" element={<Tasks/>}/>
+                <Route path="/tasks/view" element={<TaskView/>}/>
+                <Route path="/tasks/create" element={<TaskCreate/>}/>
+                <Route path="/tasks/update" element={<TaskUpdate/>}/>
+                <Route path="/profile" element={<Profile/>}/>
+              </Routes>
+            </Layout>
+          </main>
+
+          {/*<Grid container spacing={2}>*/}
+          {/*  <Grid item xs={2}>*/}
+          {/*    <Sidebar menus={menus}/>*/}
+          {/*  </Grid>*/}
+          {/*  <Grid item xs={10}>*/}
+          {/*    <Layout>*/}
+          {/*      <Routes>*/}
+          {/*        <Route path="/" element={<Home/>}/>*/}
+          {/*        <Route path="/tasks" element={<Tasks/>}/>*/}
+          {/*        <Route path="/tasks/view" element={<TaskView/>}/>*/}
+          {/*        <Route path="/tasks/create" element={<TaskCreate/>}/>*/}
+          {/*        <Route path="/tasks/update" element={<TaskUpdate/>}/>*/}
+          {/*        <Route path="/profile" element={<Profile/>}/>*/}
+          {/*      </Routes>*/}
+          {/*    </Layout>*/}
+          {/*  </Grid>*/}
+          {/*</Grid>*/}
         </div>
         <Footer menus={footerMenus}/>
       </BrowserRouter>

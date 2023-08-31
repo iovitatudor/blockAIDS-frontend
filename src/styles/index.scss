@@ -22,6 +22,17 @@ body {
 .wrapper {
   max-width: 1920px;
   margin: 0 auto;
+  display: flex;
+
+  .sidebar-area {
+    width: 300px !important;
+    flex-shrink: 0;
+  }
+
+  .main-area {
+    flex-shrink: 1;
+    flex-grow: 1;
+  }
 
   .content-area {
     background-color: #F6FEFE;
