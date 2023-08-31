@@ -14,11 +14,13 @@
     display: flex;
     padding: 18px 32px;
     justify-content: space-between;
+
     h3 {
       color: $black5;
       font-family: Satoshi-Bold, serif;
       font-size: 18px;
     }
+
     a {
       color: $blue3;
       font-family: Satoshi-Medium, serif;
@@ -33,12 +35,13 @@
     display: flex;
     justify-content: space-between;
     background-color: $blue1;
+    padding: 16px 32px;
 
     .tasks-head-item {
-      padding: 16px 32px;
+      display: flex;
+      align-items: center;
       font-family: 'Satoshi-Bold', serif;
       font-size: 16px;
-      min-width: 5%;
     }
   }
 
@@ -47,12 +50,11 @@
     justify-content: space-between;
     background-color: $black0;
     border-bottom: 1px solid $black1;
+    padding: 16px 32px;
 
     .tasks-body-item {
       display: flex;
       align-items: center;
-      padding: 16px 32px;
-      min-width: 5%;
       color: $black3;
       font-size: 16px;
 
@@ -130,15 +132,15 @@
   }
 
   .lg {
-    width: 30% !important;
+    width: 26% !important;
   }
 
   .md {
-    width: 20% !important;
+    width: 22% !important;
   }
 
   .sm {
-    width: 13.2% !important;
+    width: 15% !important;
   }
 
   .xs {

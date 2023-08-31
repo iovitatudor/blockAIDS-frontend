@@ -13,7 +13,7 @@ const TasksItem: FC = () => {
       </div>
       <div className="tasks-body-item md">Registration in Med System</div>
       <div className="tasks-body-item md">03 September, 08:00 PM</div>
-      <div className="tasks-body-item sm">323</div>
+      <div className="tasks-body-item xs">323</div>
       <div className="tasks-body-item sm">
         <span className="badge badge-progress">In progress</span>
       </div>
