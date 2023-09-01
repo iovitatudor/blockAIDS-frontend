@@ -1,4 +1,4 @@
-import React, {ChangeEvent, FC, ReactNode} from "react";
+import React, {ChangeEvent, FC} from "react";
 
 interface IMyTextareaProps {
   label?: string

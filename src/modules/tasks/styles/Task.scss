@@ -230,7 +230,7 @@
     padding: 16px 32px;
     border-radius: 8px;
     color: $blue1;
-    font-size: 18px;
+    font-size: 1.1rem;
     font-family: 'Satoshi-Bold', serif;
     display: flex;
     cursor: pointer;
@@ -238,6 +238,9 @@
     .icon {
       background-image: url("../assets/addNewTaskBtnIcon.png");
       margin-right: 8px;
+    }
+    &:hover {
+      background-color: $blue4;
     }
   }
 }

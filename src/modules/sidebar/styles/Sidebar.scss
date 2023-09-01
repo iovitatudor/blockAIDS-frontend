@@ -63,7 +63,6 @@
       background-repeat: no-repeat;
       background-position: center center;
     }
-
   }
 
   .menu-item {
@@ -76,6 +75,7 @@
 
     &:hover {
       background-color: $blue15;
+
       .menu-item-name {
         color: $blue3;
       }
@@ -109,4 +109,15 @@
     }
   }
 
+  @media only screen and (max-width: 1279px) {
+    .logo {
+      display: none;
+    }
+    .profile-wrapper {
+      margin-top: 24px;
+    }
+    .menu-item {
+      border-bottom: 1px solid $black1;
+    }
+  }
 }

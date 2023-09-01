@@ -19,6 +19,13 @@ body {
   transition: all 0.2s ease-in-out;
 }
 
+.desktop-device {
+  display: flex !important;
+}
+.mobile-device {
+  display: none !important;
+}
+
 .wrapper {
   max-width: 1920px;
   margin: 0 auto;
@@ -180,6 +187,19 @@ body {
 }
 
 @media only screen and (max-width: 1279px) {
+  .desktop-device {
+    display: none !important;
+  }
+  .mobile-device {
+    display: flex !important;
+  }
+
+  .menu-burgher {
+    position: absolute;
+    left: 0;
+    top: 33px;
+  }
+
   #root {
     background-color: $blue0;
   }
@@ -195,5 +215,6 @@ body {
     display: flex;
     justify-content: center;
     padding: 24px;
+    width: 100%;
   }
 }

@@ -1,6 +1,9 @@
 import React, {FC, useState} from "react";
 import {Box, Button, Drawer} from "@mui/material";
 import MenuIcon from '@mui/icons-material/Menu';
+import {ISidebarMenu, Sidebar} from "../modules/sidebar";
+import {menus} from "../api/menu";
+
 
 const SidebarDrawer: FC = () => {
   const [drawer, setDrawer] = useState(false);
@@ -9,8 +12,8 @@ const SidebarDrawer: FC = () => {
   };
 
   return (
-    <div>
-      <Button onClick={toggleDrawer}> <MenuIcon></MenuIcon></Button>
+    <>
+      <Button style={{color: '#292D32'}} onClick={toggleDrawer}> <MenuIcon></MenuIcon></Button>
       <Drawer
         anchor="left"
         open={drawer}
@@ -22,9 +25,10 @@ const SidebarDrawer: FC = () => {
           onClick={toggleDrawer}
           onKeyDown={toggleDrawer}
         >
+          <Sidebar menus={menus}/>
         </Box>
       </Drawer>
-    </div>
+    </>
   );
 }
 

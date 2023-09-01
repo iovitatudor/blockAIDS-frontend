@@ -48,7 +48,7 @@ export const menus: ISidebarMenu[] = [
     name: 'Tasks',
     icon: '/images/menuIcons/tasks.png',
     notification: 0,
-    url: '/',
+    url: '/tasks',
   },
   {
     id: 8,

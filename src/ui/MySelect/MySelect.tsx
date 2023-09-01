@@ -3,7 +3,6 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select, {SelectChangeEvent} from '@mui/material/Select';
 import SelectIcon from './SelectIcon';
-import selectTaksIcon from '../assets/selectTaksIcon.svg';
 
 export interface ISelectOptions {
   name: string;

@@ -6,27 +6,48 @@ import FooterContacts from "./FooterContacts";
 import FooterMenuList from "./FooterMenuList";
 import {IFooterMenus} from "../types/IFooterMenu";
 import FooterCopyright from "./FooterCopyright";
+import {BrowserView, MobileView} from 'react-device-detect';
 
 interface IFooterProps {
   menus: IFooterMenus[],
 }
 
 const FooterWidget: FC<IFooterProps> = (props) => {
+
+  const menu = props.menus[0];
+  const about = props.menus[1];
+  const policies = props.menus[2];
+
   return (
     <footer>
-      <div className="footer-inside">
+      <BrowserView className="footer-inside desktop-device">
         <Grid container columnSpacing={3}>
-          <Grid item xs={3}>
+          <Grid item md={3} xs={4}>
             <FooterLogo/>
             <FooterContacts/>
           </Grid>
           {props.menus.map((menuList, index) =>
-            <Grid item xs={3} key={index}>
-              <FooterMenuList menuList={menuList} />
+            <Grid item md={3} xs={4} key={index}>
+              <FooterMenuList menuList={menuList}/>
             </Grid>
           )}
         </Grid>
-      </div>
+      </BrowserView>
+      <MobileView className="footer-inside mobile-device">
+        <Grid container columnSpacing={3}>
+          <Grid item xs={4}>
+            <FooterLogo/>
+            <FooterContacts/>
+          </Grid>
+          <Grid item xs={4}>
+            <FooterMenuList menuList={menu}/>
+          </Grid>
+          <Grid item xs={4}>
+            <FooterMenuList menuList={about}/>
+            <FooterMenuList menuList={policies}/>
+          </Grid>
+        </Grid>
+      </MobileView>
       <FooterCopyright/>
     </footer>
 

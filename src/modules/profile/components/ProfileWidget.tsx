@@ -1,5 +1,5 @@
 import React, {FC} from "react";
-import {Avatar, FormControlLabel, FormLabel, Grid, Radio, RadioGroup, Stack} from "@mui/material";
+import {Avatar, Button, FormControlLabel, FormLabel, Grid, Radio, RadioGroup, Stack} from "@mui/material";
 import '../styles/Profile.scss';
 import MyButton from "../../../ui/MyButton";
 import MyInput from "../../../ui/MyInput";
@@ -7,7 +7,6 @@ import userIcon from "../assets/userIcon.svg";
 import emailIcon from "../assets/emailIcon.svg";
 import phoneIcon from "../assets/phoneIcon.svg";
 import calendarIcon from "../assets/calendarIcon.svg";
-import ProfileImage from "./ProfileImage";
 
 const ProfileWidget: FC = () => {
   const [value, setValue] = React.useState('female');
@@ -15,6 +14,10 @@ const ProfileWidget: FC = () => {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setValue((event.target as HTMLInputElement).value);
   };
+
+  const onSelectFile = (event: React.ChangeEvent<HTMLInputElement>) => {
+    return event;
+  }
 
   return (
     <div className="profile-area">
@@ -25,8 +28,10 @@ const ProfileWidget: FC = () => {
         </div>
         <div className="upload-form">
           <h3>Profile Picture</h3>
-          {/*<MyButton>Upload image</MyButton>*/}
-          <ProfileImage/>
+          <Button variant="contained" component="label">
+            Upload image
+            <input hidden accept="image/*" type="file" onChange={onSelectFile}/>
+          </Button>
         </div>
       </div>
       <div>
@@ -68,8 +73,6 @@ const ProfileWidget: FC = () => {
           </Stack>
         </Grid>
       </Grid>
-
-
     </div>
   );
 }

@@ -1,6 +1,5 @@
 import React, {FC} from 'react';
 import {BrowserRouter, Link, Route, Routes} from "react-router-dom";
-import {Grid} from "@mui/material";
 import {Sidebar} from "./modules/sidebar";
 import {Footer} from "./modules/footer";
 import Layout from "./components/Layout";
@@ -21,14 +20,16 @@ const App: FC = () => {
       <BrowserRouter>
         <div className="wrapper">
 
-          <BrowserView>
+          <BrowserView className="desktop-device">
             <aside className="sidebar-area">
               <Sidebar menus={menus}/>
             </aside>
           </BrowserView>
-          <MobileView>
+          <MobileView className="mobile-device">
             <div className="mobile-header">
-              {/*<SidebarDrawer/>*/}
+              <div className="menu-burgher">
+                <SidebarDrawer/>
+              </div>
               <Link to="/" className="logo">
                 <img src='/images/logo.svg' alt=""/>
               </Link>

@@ -59,26 +59,26 @@ export const footerMenus:IFooterMenus[] = [
         title: 'Treatment',
         url: '/',
       },
-      {
-        id: 3,
-        title: 'Medical records',
-        url: '/',
-      },
-      {
-        id: 4,
-        title: 'Stay сlean',
-        url: '/',
-      },
-      {
-        id: 5,
-        title: 'My friends',
-        url: '/',
-      },
-      {
-        id: 6,
-        title: 'Notifications',
-        url: '/',
-      },
+      // {
+      //   id: 3,
+      //   title: 'Medical records',
+      //   url: '/',
+      // },
+      // {
+      //   id: 4,
+      //   title: 'Stay сlean',
+      //   url: '/',
+      // },
+      // {
+      //   id: 5,
+      //   title: 'My friends',
+      //   url: '/',
+      // },
+      // {
+      //   id: 6,
+      //   title: 'Notifications',
+      //   url: '/',
+      // },
     ]
   },
   {
