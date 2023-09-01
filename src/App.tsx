@@ -13,6 +13,10 @@ import {menus} from "./api/menu";
 import {footerMenus} from "./api/footerMenu";
 import SidebarDrawer from "./components/SidebarDrawer";
 import {BrowserView, MobileView} from 'react-device-detect';
+import HomeIcon from './styles/assets/homeIcon.svg';
+import TaskIcon from './styles/assets/taskIcon.png';
+import TreatmentIcon from './styles/assets/TreatmentIcon.svg';
+import ProfileIcon from './styles/assets/ProfileIcon.svg';
 
 const App: FC = () => {
   return (
@@ -50,6 +54,35 @@ const App: FC = () => {
           </main>
         </div>
         <Footer menus={footerMenus}/>
+        <MobileView className="mobile-device">
+          <div className="bottom-bar">
+            <div className="bar-item">
+              <Link to="/">
+                <i className="icon" style={{backgroundImage: `url(${HomeIcon})`}}></i>
+                Home
+              </Link>
+            </div>
+            <div className="bar-item">
+              <Link to="/tasks">
+                <i className="icon" style={{backgroundImage: `url(${TaskIcon})`}}></i>
+                Tasks
+              </Link>
+            </div>
+            <div className="bar-item">
+              <SidebarDrawer/>
+            </div>
+            <div className="bar-item">
+              <i className="icon" style={{backgroundImage: `url(${TreatmentIcon})`}}></i>
+              Treatment
+            </div>
+            <div className="bar-item">
+              <Link to="/profile">
+                <i className="icon" style={{backgroundImage: `url(${ProfileIcon})`}}></i>
+                Profile
+              </Link>
+            </div>
+          </div>
+        </MobileView>
       </BrowserRouter>
     </React.Fragment>
   );

@@ -190,3 +190,31 @@
   background-color: #e6e6e6;
 }
 
+
+@media only screen and (max-width: 768px) {
+  .tasks-calendar {
+
+    p {
+      //border: 1px solid red;
+      background-color: #13C2BD;
+      padding: 16px 32px;
+      border-radius: 8px;
+      color: #E8FDFC;
+      font-size: 1.1rem;
+      font-family: "Satoshi-Bold", serif;
+      display: flex;
+      cursor: pointer;
+      text-align: center;
+      justify-content: center;
+    }
+
+    .calendar-tooltip {
+      width: 100%;
+      right: 0;
+      left: 0;
+      top: 50px;
+    }
+  }
+}
+
+

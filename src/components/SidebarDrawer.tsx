@@ -3,6 +3,8 @@ import {Box, Button, Drawer} from "@mui/material";
 import MenuIcon from '@mui/icons-material/Menu';
 import {ISidebarMenu, Sidebar} from "../modules/sidebar";
 import {menus} from "../api/menu";
+import MenuIcon1 from '../styles/assets/MenuIcon.svg';
+
 
 
 const SidebarDrawer: FC = () => {
@@ -13,7 +15,15 @@ const SidebarDrawer: FC = () => {
 
   return (
     <>
-      <Button style={{color: '#292D32'}} onClick={toggleDrawer}> <MenuIcon></MenuIcon></Button>
+      <div onClick={toggleDrawer} className="mobile-bar-view">
+        <i className="icon" style={{backgroundImage: `url(${MenuIcon1})`}}></i>
+        Menu
+      </div>
+
+      <Button style={{color: '#292D32'}} onClick={toggleDrawer} className="tablet-bar-view">
+        <MenuIcon></MenuIcon>
+      </Button>
+
       <Drawer
         anchor="left"
         open={drawer}

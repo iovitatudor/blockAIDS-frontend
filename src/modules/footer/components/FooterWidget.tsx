@@ -35,16 +35,23 @@ const FooterWidget: FC<IFooterProps> = (props) => {
       </BrowserView>
       <MobileView className="footer-inside mobile-device">
         <Grid container columnSpacing={3}>
-          <Grid item xs={4}>
+          <Grid item md={4} xs={12}>
             <FooterLogo/>
-            <FooterContacts/>
+            <div className="footer-contacts-md">
+              <FooterContacts/>
+            </div>
           </Grid>
-          <Grid item xs={4}>
+          <Grid item md={4} xs={12}>
             <FooterMenuList menuList={menu}/>
           </Grid>
-          <Grid item xs={4}>
+          <Grid item md={4} xs={12}>
             <FooterMenuList menuList={about}/>
             <FooterMenuList menuList={policies}/>
+          </Grid>
+          <Grid item md={4} xs={12}>
+            <div className="footer-contacts-sm">
+              <FooterContacts/>
+            </div>
           </Grid>
         </Grid>
       </MobileView>

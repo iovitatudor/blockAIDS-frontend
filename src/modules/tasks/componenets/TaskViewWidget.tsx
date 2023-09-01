@@ -20,8 +20,9 @@ const TaskViewWidget: FC = () => {
             To begin the registration process at hospital located at 2118 Thornridge Cir. Syracuse, Connecticut 35624,
             patients provide their personal information and medical history, ensuring accurate records for quality care.
           </p>
-          <Grid container spacing={3} className="task-options">
-            <Grid item xs={6} className="task-option">
+          <Grid container rowSpacing={{xs: 0, sm: 2, md: 3}} columnSpacing={{xs: 0, sm: 2, md: 3}}
+                className="task-options">
+            <Grid item sm={6} xs={12} className="task-option">
               <div className="option-label">
                 <i className="icon" style={{backgroundImage: `url(${authorIcon})`}}></i>
                 Author
@@ -31,7 +32,7 @@ const TaskViewWidget: FC = () => {
                 <div>Wade Warren</div>
               </div>
             </Grid>
-            <Grid item xs={6} className="task-option">
+            <Grid item sm={6} xs={12} className="task-option">
               <div className="option-label">
                 <i className="icon" style={{backgroundImage: `url(${specialistIcon})`}}></i>
                 Specialist
@@ -41,17 +42,17 @@ const TaskViewWidget: FC = () => {
                 <div>Dr. Bessie Cooper</div>
               </div>
             </Grid>
-            <Grid item xs={6} className="task-option">
+            <Grid item sm={6} xs={12} className="task-option">
               <div className="option-label">
                 <i className="icon" style={{backgroundImage: `url(${organizationIcon})`}}></i>
                 Organization
               </div>
-              <div className="option">
+              <div className="option option-block">
                 <b>Healthy Life Clinic,</b>
                 <span>7529 E. Pecan St.7529 E. Pecan </span>
               </div>
             </Grid>
-            <Grid item xs={6} className="task-option">
+            <Grid item sm={6} xs={12} className="task-option">
               <div className="option-label">
                 <i className="icon" style={{backgroundImage: `url(${calendarIcon})`}}></i>
                 Due Time
@@ -60,7 +61,7 @@ const TaskViewWidget: FC = () => {
                 <span>03 September, 08:00 PM</span>
               </div>
             </Grid>
-            <Grid item xs={6} className="task-option">
+            <Grid item sm={6} xs={12} className="task-option">
               <div className="option-label">
                 <i className="icon" style={{backgroundImage: `url(${statusIcon})`}}></i>
                 Status

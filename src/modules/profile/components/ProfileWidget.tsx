@@ -28,7 +28,7 @@ const ProfileWidget: FC = () => {
         </div>
         <div className="upload-form">
           <h3>Profile Picture</h3>
-          <Button variant="contained" component="label">
+          <Button component="label">
             Upload image
             <input hidden accept="image/*" type="file" onChange={onSelectFile}/>
           </Button>
@@ -38,20 +38,20 @@ const ProfileWidget: FC = () => {
 
       </div>
 
-      <Grid container spacing={3} className="profile-fields">
-        <Grid item xs={6} className="profile-field">
+      <Grid rowSpacing={{ xs: 0, sm: 2, md: 3 }} columnSpacing={{ xs: 0, sm: 2, md: 3 }} className="profile-fields">
+        <Grid item sm={6} xs={12} className="profile-field">
           <MyInput type='text' value='Wade Warren' name='name' label='Full Name' icon={userIcon}/>
         </Grid>
-        <Grid item xs={6} className="profile-field">
+        <Grid item sm={6} xs={12} className="profile-field">
           <MyInput type='email' value='Wade@gmail.com' name='email' label='Email address' icon={emailIcon}/>
         </Grid>
-        <Grid item xs={6} className="profile-field">
+        <Grid item sm={6} xs={12} className="profile-field">
           <MyInput type='tel' value='+373 123 123 123' name='phone' label='Phone number' icon={phoneIcon}/>
         </Grid>
-        <Grid item xs={6} className="profile-field">
+        <Grid item sm={6} xs={12} className="profile-field">
           <MyInput type='text' value='03.04.1987' name='date' label='Date of birth' icon={calendarIcon}/>
         </Grid>
-        <Grid item xs={6}>
+        <Grid item sm={6} xs={12}>
           <FormLabel id="demo-controlled-radio-buttons-group">Biological sex</FormLabel>
           <RadioGroup
             aria-labelledby="demo-controlled-radio-buttons-group"
@@ -68,7 +68,7 @@ const ProfileWidget: FC = () => {
                  justifyContent="space-between"
                  alignItems="center"
                  sx={{mt: 3, mb: 2}}>
-            <MyButton className='btn-outlined'>Cancel</MyButton>
+            {/*<MyButton className='btn-outlined'>Cancel</MyButton>*/}
             <MyButton>Update profile</MyButton>
           </Stack>
         </Grid>

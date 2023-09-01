@@ -3,6 +3,7 @@ import '../styles/Task.scss';
 import TasksItem from "./TasksItem";
 import {Link} from "react-router-dom";
 import arrowRight from "../assets/arrowRight.svg";
+import {BrowserView, MobileView} from 'react-device-detect';
 
 interface ITasksList {
   heading?: string;
@@ -29,7 +30,9 @@ const TasksList: FC<ITasksList> = (props) => {
         )}
         <div className="tasks-top-options">
           {Filter && <Filter/>}
-          {Calendar && <Calendar/>}
+          <BrowserView>
+            {Calendar && <Calendar/>}
+          </BrowserView>
         </div>
         <div className="tasks-head">
           <div className="tasks-head-item lg">Author</div>
@@ -53,6 +56,10 @@ const TasksList: FC<ITasksList> = (props) => {
             Add new task
           </button>
         </Link>
+        <br/>
+        <MobileView>
+          {Calendar && <Calendar/>}
+        </MobileView>
       </div>
     </>
   );

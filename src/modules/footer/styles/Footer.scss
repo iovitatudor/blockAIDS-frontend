@@ -95,5 +95,31 @@ footer {
         }
       }
     }
+    .footer-contacts-sm {
+      display: none;
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  footer {
+    .footer-inside {
+      padding: 15px;
+
+      .footer-menu-list-wrapper {
+        margin: 40px 0 0 0 ;
+      }
+    }
+    .footer-contacts-md {
+      display: none;
+    }
+    .footer-contacts-sm {
+      display: flex;
+    }
+    .footer-copyright {
+      padding: 32px 15px;
+      text-align: left;
+      margin-bottom: 80px;
+    }
   }
 }

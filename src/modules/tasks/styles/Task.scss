@@ -72,7 +72,7 @@
         -webkit-font-smoothing: antialiased; /* webkit text rendering fix */
 
         .tooltip {
-          background: #FFF;
+          //background: #FFF;
           color: $blue3;
           display: block;
           right: -20px;
@@ -81,7 +81,7 @@
           opacity: 0;
           pointer-events: none;
           position: absolute;
-          width: 200px;
+          width: 100px;
           transform: translateY(10px);
           transition: all .25s ease-out;
           box-shadow: 0px 8px 24px -4px rgba(173, 176, 184, 0.08), 0px 6px 12px -6px rgba(173, 176, 184, 0.12);
@@ -239,6 +239,7 @@
       background-image: url("../assets/addNewTaskBtnIcon.png");
       margin-right: 8px;
     }
+
     &:hover {
       background-color: $blue4;
     }
@@ -404,6 +405,72 @@
       }
     }
   }
+}
 
+@media only screen and (max-width: 768px) {
+  .tasks-area {
+    margin-top: 0;
+    border: 0;
+    box-shadow: none;
+    padding: 20px 0;
+
+    .tasks-body-wrapper {
+      padding: 0;
+    }
+
+    .tasks-body {
+      flex-basis: 100%;
+      margin: 0 0 16px 0;
+    }
+  }
+  .tasks-top-options {
+    padding-left: 0;
+    justify-content: center;
+
+    .tasks-filter {
+      .filter-option {
+        padding: 5px;
+        font-size: 12px;
+      }
+    }
+  }
+
+  .tasks-view-area {
+    padding: 0;
+  }
+
+  .task-create-area {
+    padding: 0;
+  }
+
+  .task-options {
+    background-color: #FFF;
+    margin-top: 0;
+
+    .task-option {
+      display: flex;
+
+      .option-label {
+        width: 40%;
+      }
+
+      .option {
+        width: 60%;
+      }
+
+      .option-block {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    .add-new-task-btn {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      text-align: center;
+    }
+  }
 }
 

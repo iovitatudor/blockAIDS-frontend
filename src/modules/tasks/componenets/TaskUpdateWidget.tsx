@@ -40,8 +40,8 @@ const TaskUpdateWidget: FC = () => {
     <>
       <div className="tasks-area">
         <div className="task-create-area">
-          <Grid container spacing={3}>
-            <Grid item xs={6}>
+          <Grid container rowSpacing={{ xs: 0, sm: 2, md: 3 }} columnSpacing={{ xs: 0, sm: 2, md: 3 }}>
+            <Grid item sm={6} xs={12}>
               <MySelect label="Type of task"
                         defaultOption="Select the task"
                         onChange={handleTaskType}
@@ -49,7 +49,7 @@ const TaskUpdateWidget: FC = () => {
                         value={type}
                         icon={typeTaskIcon}/>
             </Grid>
-            <Grid item xs={6}>
+            <Grid item sm={6} xs={12}>
               <MySelect label="Address"
                         defaultOption="Select Organization"
                         onChange={handleTaskAddress}
@@ -57,7 +57,7 @@ const TaskUpdateWidget: FC = () => {
                         value={address}
                         icon={organizationTaskIcon}/>
             </Grid>
-            <Grid item xs={6}>
+            <Grid item sm={6} xs={12}>
               <MySelect label="Specialist/Patient"
                         defaultOption="Select the specialist"
                         onChange={handleTaskSpecialist}
@@ -65,7 +65,7 @@ const TaskUpdateWidget: FC = () => {
                         value={specialist}
                         icon={specialistTaskIcon}/>
             </Grid>
-            <Grid item xs={6}>
+            <Grid item sm={6} xs={12}>
               <MySelect label="Due Date"
                         defaultOption="13 June 2023"
                         onChange={handleTaskDateDue}
@@ -73,7 +73,7 @@ const TaskUpdateWidget: FC = () => {
                         value={dateDue}
                         icon={dateDueTaskIcon}/>
             </Grid>
-            <Grid item xs={12}>
+            <Grid item sm={6} xs={12}>
               <MyTextarea name="description" onChange={handleTaskDescription} value={description}
                           label="Description"></MyTextarea>
             </Grid>
