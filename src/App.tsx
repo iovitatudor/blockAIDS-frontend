@@ -19,6 +19,7 @@ import TreatmentIcon from './styles/assets/TreatmentIcon.svg';
 import ProfileIcon from './styles/assets/ProfileIcon.svg';
 
 const App: FC = () => {
+
   return (
     <React.Fragment>
       <BrowserRouter>

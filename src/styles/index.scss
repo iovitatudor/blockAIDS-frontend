@@ -93,6 +93,28 @@ body {
   }
 }
 
+.standard-date-picker {
+  width: 100%;
+  height: 58.5px;
+  border-radius: 8px;
+  border: 1px solid $blue2;
+  background-color: $blue1;
+  padding-left: 42px;
+  background-repeat: no-repeat;
+  background-position: 8px center;
+  background-size: 24px 24px;
+  margin: 0 0 32px 0;
+  background-image: url("../ui/assets/dateDueTaskIcon.svg");
+
+  &::placeholder {
+    color: $black2;
+  }
+
+  svg {
+    color: $blue3;
+  }
+}
+
 .standard-textarea {
   width: 100%;
   min-height: 112px;
@@ -249,6 +271,7 @@ body {
 
   .mobile-bar-view {
     display: block !important;
+
     .icon {
       display: block;
       margin: 5px auto;
@@ -287,4 +310,9 @@ body {
       }
     }
   }
+}
+
+.react-datepicker-wrapper {
+  width: 100%;
+
 }
