@@ -1,5 +1,5 @@
 import React, {FC} from "react";
-import {Avatar, Button, FormControlLabel, FormLabel, Grid, Radio, RadioGroup, Stack} from "@mui/material";
+import {Avatar, FormControlLabel, FormLabel, Grid, Radio, RadioGroup, Stack} from "@mui/material";
 import '../styles/Profile.scss';
 import MyButton from "../../../ui/MyButton";
 import MyInput from "../../../ui/MyInput";
@@ -7,38 +7,37 @@ import userIcon from "../assets/userIcon.svg";
 import emailIcon from "../assets/emailIcon.svg";
 import phoneIcon from "../assets/phoneIcon.svg";
 import calendarIcon from "../assets/calendarIcon.svg";
+import MyFileUploader from "../../../ui/MyFileUploader";
 
 const ProfileWidget: FC = () => {
   const [value, setValue] = React.useState('female');
+  const [avatar, setAvatar] = React.useState<File>();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setValue((event.target as HTMLInputElement).value);
   };
 
   const onSelectFile = (event: React.ChangeEvent<HTMLInputElement>) => {
-    return event;
+    if (event.target.files) {
+      setAvatar(event.target.files[0]);
+      console.log(avatar);
+    }
   }
 
   return (
     <div className="profile-area">
-
       <div className="profile-picture">
         <div className="avatar">
           <Avatar sx={{width: '120px', height: '120px'}}></Avatar>
         </div>
         <div className="upload-form">
           <h3>Profile Picture</h3>
-          <Button component="label">
-            Upload image
-            <input hidden accept="image/*" type="file" onChange={onSelectFile}/>
-          </Button>
+          <MyFileUploader onChange={onSelectFile} label="Select File"></MyFileUploader>
         </div>
       </div>
       <div>
-
       </div>
-
-      <Grid rowSpacing={{ xs: 0, sm: 2, md: 3 }} columnSpacing={{ xs: 0, sm: 2, md: 3 }} className="profile-fields">
+      <Grid rowSpacing={{xs: 0, sm: 2, md: 3}} columnSpacing={{xs: 0, sm: 2, md: 3}} className="profile-fields">
         <Grid item sm={6} xs={12} className="profile-field">
           <MyInput type='text' value='Wade Warren' name='name' label='Full Name' icon={userIcon}/>
         </Grid>
@@ -68,7 +67,6 @@ const ProfileWidget: FC = () => {
                  justifyContent="space-between"
                  alignItems="center"
                  sx={{mt: 3, mb: 2}}>
-            {/*<MyButton className='btn-outlined'>Cancel</MyButton>*/}
             <MyButton>Update profile</MyButton>
           </Stack>
         </Grid>

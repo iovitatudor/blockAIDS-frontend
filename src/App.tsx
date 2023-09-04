@@ -9,14 +9,14 @@ import TaskView from "./pages/TaskView";
 import TaskUpdate from "./pages/TaskUpdate";
 import Tasks from "./pages/Tasks";
 import Profile from "./pages/Profile";
-import {menus} from "./api/menu";
-import {footerMenus} from "./api/footerMenu";
 import SidebarDrawer from "./components/SidebarDrawer";
 import {BrowserView, MobileView} from 'react-device-detect';
 import HomeIcon from './styles/assets/homeIcon.svg';
 import TaskIcon from './styles/assets/taskIcon.png';
 import TreatmentIcon from './styles/assets/TreatmentIcon.svg';
 import ProfileIcon from './styles/assets/ProfileIcon.svg';
+import {menus} from "./api/menu";
+import {footerMenus} from "./api/footerMenu";
 
 const App: FC = () => {
 
@@ -24,7 +24,6 @@ const App: FC = () => {
     <React.Fragment>
       <BrowserRouter>
         <div className="wrapper">
-
           <BrowserView className="desktop-device">
             <aside className="sidebar-area">
               <Sidebar menus={menus}/>
@@ -40,7 +39,6 @@ const App: FC = () => {
               </Link>
             </div>
           </MobileView>
-
           <main className="main-area">
             <Layout>
               <Routes>

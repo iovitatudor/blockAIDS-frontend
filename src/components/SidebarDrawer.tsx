@@ -1,11 +1,9 @@
 import React, {FC, useState} from "react";
 import {Box, Button, Drawer} from "@mui/material";
 import MenuIcon from '@mui/icons-material/Menu';
-import {ISidebarMenu, Sidebar} from "../modules/sidebar";
+import {Sidebar} from "../modules/sidebar";
 import {menus} from "../api/menu";
 import MenuIcon1 from '../styles/assets/MenuIcon.svg';
-
-
 
 const SidebarDrawer: FC = () => {
   const [drawer, setDrawer] = useState(false);

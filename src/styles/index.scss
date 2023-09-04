@@ -149,6 +149,21 @@ body {
   }
 }
 
+.standard-upload-btn {
+  border-radius: 8px !important;
+  background: $blue3 !important;
+  border: 2px solid $blue3 !important;
+  color: $blue1 !important;
+  padding: 8px 20px !important;
+  font-size: 1rem !important;
+  font-family: 'Satoshi-Bold', serif !important;
+
+  &:hover {
+    background: $black0 !important;
+    color: $blue3 !important;
+  }
+}
+
 .btn-outlined {
   cursor: pointer;
   border-radius: 8px;
@@ -219,7 +234,7 @@ body {
 
   .menu-burgher {
     position: absolute;
-    left: 0;
+    left: 10px;
     top: 33px;
   }
 
@@ -240,6 +255,17 @@ body {
     padding: 24px;
     width: 100%;
   }
+  .bottom-bar {
+    display: none;
+  }
+
+  .tablet-bar-view {
+    display: block !important;
+  }
+
+  .mobile-bar-view {
+    display: none !important;
+  }
 }
 
 @media only screen and (max-width: 768px) {
@@ -249,17 +275,7 @@ body {
   .content-area {
     background-color: #FFF !important;
   }
-  .tablet-bar-view {
-    display: block !important;
-  }
 
-  .mobile-bar-view {
-    display: none !important;
-  }
-
-}
-
-@media only screen and (max-width: 768px) {
   .standard-button {
     width: 100%;
     text-align: center;

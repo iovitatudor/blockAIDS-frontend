@@ -5,9 +5,9 @@ import {SelectChangeEvent} from "@mui/material/Select";
 import typeTaskIcon from '../../../ui/assets/typeTaskIcon.svg';
 import organizationTaskIcon from '../../../ui/assets/organizationTaskIcon.svg';
 import specialistTaskIcon from '../../../ui/assets/specialistTaskIcon.svg';
-import dateDueTaskIcon from '../../../ui/assets/dateDueTaskIcon.svg';
 import MyTextarea from "../../../ui/MyTextarea";
 import MyButton from "../../../ui/MyButton";
+import MyDatePicker from "../../../ui/MyDatePicker";
 
 const mockOptions: ISelectOptions[] = [
   {
@@ -28,19 +28,20 @@ const TaskUpdateWidget: FC = () => {
   const [type, setType] = React.useState('');
   const [address, setAddress] = React.useState('');
   const [specialist, setSpecialist] = React.useState('');
-  const [dateDue, setDateDue] = React.useState('');
+  const [dateDue, setDateDue] = React.useState<Date | null>(null);
   const [description, setDescription] = React.useState('');
+
   const handleTaskType = (event: SelectChangeEvent) => setType(event.target.value);
   const handleTaskAddress = (event: SelectChangeEvent) => setAddress(event.target.value);
   const handleTaskSpecialist = (event: SelectChangeEvent) => setSpecialist(event.target.value);
-  const handleTaskDateDue = (event: SelectChangeEvent) => setDateDue(event.target.value);
+  const handleTaskDateDue = (date: Date | null) => setDateDue(date);
   const handleTaskDescription = (event: ChangeEvent<HTMLTextAreaElement>) => setDescription(event.target.value);
 
   return (
     <>
       <div className="tasks-area">
         <div className="task-create-area">
-          <Grid container rowSpacing={{ xs: 0, sm: 2, md: 3 }} columnSpacing={{ xs: 0, sm: 2, md: 3 }}>
+          <Grid container rowSpacing={{xs: 0, sm: 2, md: 3}} columnSpacing={{xs: 0, sm: 2, md: 3}}>
             <Grid item sm={6} xs={12}>
               <MySelect label="Type of task"
                         defaultOption="Select the task"
@@ -65,13 +66,9 @@ const TaskUpdateWidget: FC = () => {
                         value={specialist}
                         icon={specialistTaskIcon}/>
             </Grid>
-            <Grid item sm={6} xs={12}>
-              <MySelect label="Due Date"
-                        defaultOption="13 June 2023"
-                        onChange={handleTaskDateDue}
-                        options={mockOptions}
-                        value={dateDue}
-                        icon={dateDueTaskIcon}/>
+            <Grid item md={6} xs={12}>
+              <MyDatePicker label={'Due Date'} onChange={handleTaskDateDue} selected={dateDue}
+                            placeholder="01/07/2023"></MyDatePicker>
             </Grid>
             <Grid item sm={6} xs={12}>
               <MyTextarea name="description" onChange={handleTaskDescription} value={description}

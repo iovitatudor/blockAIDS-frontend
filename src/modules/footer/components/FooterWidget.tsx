@@ -22,12 +22,12 @@ const FooterWidget: FC<IFooterProps> = (props) => {
     <footer>
       <BrowserView className="footer-inside desktop-device">
         <Grid container columnSpacing={3}>
-          <Grid item md={3} xs={4}>
+          <Grid item sm={3} xs={4}>
             <FooterLogo/>
             <FooterContacts/>
           </Grid>
           {props.menus.map((menuList, index) =>
-            <Grid item md={3} xs={4} key={index}>
+            <Grid item sm={3} xs={4} key={index}>
               <FooterMenuList menuList={menuList}/>
             </Grid>
           )}
@@ -35,20 +35,20 @@ const FooterWidget: FC<IFooterProps> = (props) => {
       </BrowserView>
       <MobileView className="footer-inside mobile-device">
         <Grid container columnSpacing={3}>
-          <Grid item md={4} xs={12}>
+          <Grid item sm={4} xs={12}>
             <FooterLogo/>
             <div className="footer-contacts-md">
               <FooterContacts/>
             </div>
           </Grid>
-          <Grid item md={4} xs={12}>
+          <Grid item sm={4} xs={12}>
             <FooterMenuList menuList={menu}/>
           </Grid>
-          <Grid item md={4} xs={12}>
+          <Grid item sm={4} xs={12}>
             <FooterMenuList menuList={about}/>
             <FooterMenuList menuList={policies}/>
           </Grid>
-          <Grid item md={4} xs={12}>
+          <Grid item sm={4} xs={12}>
             <div className="footer-contacts-sm">
               <FooterContacts/>
             </div>

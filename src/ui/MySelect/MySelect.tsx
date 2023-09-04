@@ -1,4 +1,4 @@
-import React, {ChangeEvent, FC} from "react";
+import React, {FC} from "react";
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select, {SelectChangeEvent} from '@mui/material/Select';

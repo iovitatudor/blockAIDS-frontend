@@ -5,7 +5,7 @@ footer {
   border-top: 1px solid $blue3;
   background-color: #F6FEFE;
   margin-top: 60px;
-  padding: 0 15px;
+  padding: 0 25px;
 
   .footer-inside {
     max-width: 1920px;
@@ -95,27 +95,31 @@ footer {
         }
       }
     }
+
     .footer-contacts-sm {
       display: none;
     }
   }
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 760px) {
   footer {
     .footer-inside {
       padding: 15px;
 
       .footer-menu-list-wrapper {
-        margin: 40px 0 0 0 ;
+        margin: 40px 0 0 0;
       }
     }
+
     .footer-contacts-md {
       display: none;
     }
+
     .footer-contacts-sm {
       display: flex;
     }
+
     .footer-copyright {
       padding: 32px 15px;
       text-align: left;

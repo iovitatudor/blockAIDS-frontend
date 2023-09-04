@@ -5,11 +5,8 @@ import {SelectChangeEvent} from "@mui/material/Select";
 import typeTaskIcon from '../../../ui/assets/typeTaskIcon.svg';
 import organizationTaskIcon from '../../../ui/assets/organizationTaskIcon.svg';
 import specialistTaskIcon from '../../../ui/assets/specialistTaskIcon.svg';
-import dateDueTaskIcon from '../../../ui/assets/dateDueTaskIcon.svg';
 import MyTextarea from "../../../ui/MyTextarea";
 import MyButton from "../../../ui/MyButton";
-// import {DatePicker, LocalizationProvider} from "@mui/x-date-pickers";
-// import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
 import MyDatePicker from "../../../ui/MyDatePicker";
 
 const mockOptions: ISelectOptions[] = [
@@ -31,10 +28,9 @@ const TaskCreateWidget: FC = () => {
   const [type, setType] = React.useState('');
   const [address, setAddress] = React.useState('');
   const [specialist, setSpecialist] = React.useState('');
-  // const [dateDue, setDateDue] = React.useState('');
   const [dateDue, setDateDue] = React.useState<Date | null>(null);
-
   const [description, setDescription] = React.useState('');
+
   const handleTaskType = (event: SelectChangeEvent) => setType(event.target.value);
   const handleTaskAddress = (event: SelectChangeEvent) => setAddress(event.target.value);
   const handleTaskSpecialist = (event: SelectChangeEvent) => setSpecialist(event.target.value);
@@ -71,7 +67,8 @@ const TaskCreateWidget: FC = () => {
                         icon={specialistTaskIcon}/>
             </Grid>
             <Grid item md={6} xs={12}>
-              <MyDatePicker label={'Due Date'} onChange={handleTaskDateDue} selected={dateDue} placeholder="01/07/2023"></MyDatePicker>
+              <MyDatePicker label={'Due Date'} onChange={handleTaskDateDue} selected={dateDue}
+                            placeholder="01/07/2023"></MyDatePicker>
             </Grid>
             <Grid item xs={12}>
               <MyTextarea name="description" onChange={handleTaskDescription} value={description}
@@ -82,7 +79,6 @@ const TaskCreateWidget: FC = () => {
                      justifyContent="space-between"
                      alignItems="center"
                      sx={{mt: 3, mb: 2}}>
-                {/*<MyButton className='btn-outlined'>Cancel</MyButton>*/}
                 <MyButton>Create</MyButton>
               </Stack>
             </Grid>

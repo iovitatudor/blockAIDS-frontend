@@ -5,7 +5,7 @@ interface InputProps {
   label?: string
   value: string | number
   name: string
-  placeholder?  : string
+  placeholder?: string
   icon?: string
   error?: boolean
   disabled?: boolean
