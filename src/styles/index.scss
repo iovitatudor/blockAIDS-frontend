@@ -34,8 +34,9 @@ body {
   padding: 0 15px;
 
   .sidebar-area {
-    width: 300px !important;
+    width: 290px !important;
     flex-shrink: 0;
+    margin-right: 20px;
   }
 
   .main-area {

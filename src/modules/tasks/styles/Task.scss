@@ -315,7 +315,6 @@
         b {
           color: $black5;
           font-family: Satoshi-Bold, serif;
-          width: 100%;
         }
 
         .avatar {
@@ -474,6 +473,10 @@
 
       .option {
         width: 60%;
+
+        b {
+          width: 100%;
+        }
       }
 
       .option-block {
