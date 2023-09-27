@@ -1,0 +1,1 @@
+export {default as AuthWidget} from './components/AuthWidget';

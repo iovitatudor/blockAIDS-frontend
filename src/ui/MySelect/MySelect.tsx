@@ -17,6 +17,7 @@ interface IMySelectProps {
   icon?: string;
   error?: boolean;
   disabled?: boolean;
+  className?: string;
   onChange: (e: SelectChangeEvent) => void;
 }
 
@@ -26,7 +27,7 @@ export const MySelect: FC<IMySelectProps> = (props) => {
       <InputLabel id="demo-simple-select-filled-label" className="standard-label">{props.label}</InputLabel>
       <Select
         IconComponent={SelectIcon}
-        className="standard-select"
+        className={`standard-select ${props.className}`}
         value={props.value}
         onChange={props.onChange}
         displayEmpty

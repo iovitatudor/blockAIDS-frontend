@@ -7,8 +7,9 @@ interface InputProps {
   name: string
   placeholder?: string
   icon?: string
-  error?: boolean
+  error?: string
   disabled?: boolean
+  required?: boolean
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void
 }
 
@@ -25,7 +26,7 @@ const MyInput: FC<InputProps> = (props) => {
         className="standard-input"
         {...props}
       />
-      {props.error && <p className="error">Input filed can't be empty!</p>}
+      {props.error && <p className="error">{props.error}</p>}
     </>
   );
 };
