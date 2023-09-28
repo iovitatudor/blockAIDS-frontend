@@ -1,4 +1,4 @@
-import React, {FC, useEffect} from 'react';
+import React, {FC} from 'react';
 import {BrowserRouter, Link, Route, Routes} from "react-router-dom";
 import {Sidebar} from "./modules/sidebar";
 import {Footer} from "./modules/footer";
@@ -20,27 +20,34 @@ import {menus} from "./api/menu";
 import {footerMenus} from "./api/footerMenu";
 import AuthGuard from "./guards/AuthGuard";
 import GuestGuard from "./guards/GuestGuard";
+import {useAppSelector} from "./hooks/redux";
 
 const App: FC = () => {
+  const {isLogged} = useAppSelector(state => state.authReducer)
+
   return (
     <React.Fragment>
       <BrowserRouter>
         <div className="wrapper">
-          <BrowserView className="desktop-device">
-            <aside className="sidebar-area">
-              <Sidebar menus={menus}/>
-            </aside>
-          </BrowserView>
-          <MobileView className="mobile-device">
-            <div className="mobile-header">
-              <div className="menu-burgher">
-                <SidebarDrawer/>
-              </div>
-              <Link to="/" className="logo">
-                <img src='/images/logo.svg' alt=""/>
-              </Link>
-            </div>
-          </MobileView>
+          {isLogged &&
+              <>
+                  <BrowserView className="desktop-device">
+                      <aside className="sidebar-area">
+                          <Sidebar menus={menus}/>
+                      </aside>
+                  </BrowserView>
+                  <MobileView className="mobile-device">
+                      <div className="mobile-header">
+                          <div className="menu-burgher">
+                              <SidebarDrawer/>
+                          </div>
+                          <Link to="/" className="logo">
+                              <img src='/images/logo.svg' alt=""/>
+                          </Link>
+                      </div>
+                  </MobileView>
+              </>
+          }
           <main className="main-area">
             <Layout>
               <Routes>

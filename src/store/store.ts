@@ -4,11 +4,11 @@ import {organizationsApi} from "../api/organizationsApi";
 import {specialistsApi} from "../api/specialistsApi";
 import {authApi} from "../api/authApi";
 import userReducer from './reducers/UserSlice';
-import specialistAuthReducer  from "./reducers/Auth/SpecialistAuthSlice";
+import authReducer  from "./reducers/AuthSlice";
 
 const rootReducer = combineReducers({
   userReducer,
-  specialistAuthReducer,
+  authReducer,
   [taskTypesApi.reducerPath]: taskTypesApi.reducer,
   [organizationsApi.reducerPath]: organizationsApi.reducer,
   [specialistsApi.reducerPath]: specialistsApi.reducer,

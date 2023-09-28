@@ -2,7 +2,8 @@
 @import "../../../styles/fonts";
 
 .auth-area {
-  margin-top: 80px;
+  margin-top: 20px;
+  margin-bottom: 100px;
 
   .auth-heading {
     text-align: center;
@@ -79,6 +80,28 @@
 
           &:hover {
             color: $black4;
+          }
+        }
+      }
+    }
+  }
+
+  @media only screen and (max-width: 1279px) {
+    .auth-forms {
+      form {
+        width: 100%;
+
+        .flex-center {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          a {
+            color: $black3;
+
+            &:hover {
+              color: $black4;
+            }
           }
         }
       }

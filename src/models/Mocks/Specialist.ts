@@ -1,6 +1,6 @@
-import {ISpecialists} from "../ISpecialists";
+import {ISpecialist} from "../ISpecialist";
 
-export const SpecialistMock: ISpecialists = {
+export const SpecialistMock: ISpecialist = {
   id: 0,
   name: 'Unknown ',
   email: 'unknown@email.com',

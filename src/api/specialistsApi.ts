@@ -1,5 +1,5 @@
 import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/dist/query/react";
-import {ISpecialists} from "../models/ISpecialists";
+import {ISpecialist} from "../models/ISpecialist";
 
 export const specialistsApi = createApi({
   reducerPath: 'specialists',
@@ -8,7 +8,7 @@ export const specialistsApi = createApi({
   }),
   tagTypes: ['Specialists'],
   endpoints: (build) => ({
-    fetchAllSpecialists: build.query<ISpecialists[], void>({
+    fetchAllSpecialists: build.query<ISpecialist[], void>({
       query: () => ({
         url: `/specialists`,
       }),

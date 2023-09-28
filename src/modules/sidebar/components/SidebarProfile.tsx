@@ -2,11 +2,11 @@ import React, {FC} from "react";
 import {Avatar, Grid} from "@mui/material";
 import {Link} from "react-router-dom";
 import {useAppDispatch, useAppSelector} from "../../../hooks/redux";
-import {logOut} from '../../../store/reducers/Auth/SpecialistAuthSlice';
+import {logOut} from '../../../store/reducers/AuthSlice';
 
 const SidebarProfile: FC = () => {
   const dispatch = useAppDispatch();
-  const {isLogged, specialist} = useAppSelector(state => state.specialistAuthReducer)
+  const {isLogged, authUser,type} = useAppSelector(state => state.authReducer)
 
   const signOut = () => {
     dispatch(logOut());
@@ -30,24 +30,25 @@ const SidebarProfile: FC = () => {
               <Grid container spacing={0}>
                   <Grid item xs={3} className="avatar-area">
                       <Link to="/profile">
-                          <Avatar alt="Remy Sharp" src={specialist.avatar}
+                          <Avatar alt={authUser.name}
+                                  src={authUser.avatar}
                                   sx={{width: 60, height: 60}}/>
                       </Link>
                   </Grid>
                   <Grid item xs={7} className="info-area">
                       <p className="user-name">
                           <Link to="/profile">
-                            {specialist.name}
+                            {authUser.name} ({type})
                           </Link>
                       </p>
                       <p>
-                          <span className="user-status"></span>
-                          <a href="#" className="user-aids" onClick={signOut}>Logout</a>
+                          {/*<span className="user-status"></span>*/}
+                          <span className="user-aids" onClick={signOut}>Logout</span>
                       </p>
                   </Grid>
-                  <Grid item xs={2} className="arrow-area">
-                      <p className="arrow"></p>
-                  </Grid>
+                {/*<Grid item xs={2} className="arrow-area">*/}
+                {/*    <p className="arrow"></p>*/}
+                {/*</Grid>*/}
 
               </Grid>
           </div>

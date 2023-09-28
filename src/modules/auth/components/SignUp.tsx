@@ -4,13 +4,12 @@ import MyInput from "../../../ui/MyInput";
 import emailIcon from "../../profile/assets/emailIcon.svg";
 import passwordIcon from "../assets/passwordIcon.png";
 import MyButton from "../../../ui/MyButton";
-import {registerSpecialist} from "../../../store/reducers/Auth/SpecialistAuthSlice"
 import {useAppDispatch, useAppSelector} from "../../../hooks/redux";
-import {useNavigate} from "react-router-dom";
 import {ISelectOptions, MySelect} from "../../../ui/MySelect/MySelect";
 import organizationTaskIcon from "../../../ui/assets/organizationTaskIcon.svg";
 import {SelectChangeEvent} from "@mui/material/Select";
 import {organizationsApi} from "../../../api/organizationsApi";
+import {register} from "../../../store/actions/AuthActionCreator";
 
 interface ISignUpProps {
   setPage: (page: string) => void,
@@ -27,7 +26,7 @@ const SignUp: FC<ISignUpProps> = ({setPage, type}) => {
   const [password, setPassword] = useState('');
   const [confirmedPassword, setConfirmedPassword] = useState('');
   const {data: organizations} = organizationsApi.useFetchAllOrganizationsQuery();
-  const {error: specialistAuthError} = useAppSelector(state => state.specialistAuthReducer)
+  const {error: specialistAuthError} = useAppSelector(state => state.authReducer)
 
   const handleName = (event: ChangeEvent<HTMLInputElement>) => setName(event.target.value);
   const handleEmail = (event: ChangeEvent<HTMLInputElement>) => setEmail(event.target.value);
@@ -40,7 +39,7 @@ const SignUp: FC<ISignUpProps> = ({setPage, type}) => {
     if (password !== confirmedPassword) {
       setError('Passwords not match!');
     }
-    dispatch(registerSpecialist({name, email, password, type, organizationId}));
+    dispatch(register({name, email, password, type, organizationId}));
   }
 
   useEffect(() => {
@@ -78,15 +77,18 @@ const SignUp: FC<ISignUpProps> = ({setPage, type}) => {
                      value={email}
                      onChange={handleEmail}/>
           </Grid>
-          <Grid item xs={12}>
-            <MySelect label="Organization"
-                      defaultOption="Select Organization"
-                      onChange={handleOrganizationId}
-                      options={organizationsOptions}
-                      value={organizationId}
-                      className="margin-0"
-                      icon={organizationTaskIcon}/>
-          </Grid>
+          {
+            type === 'specialist' &&
+              <Grid item xs={12}>
+                  <MySelect label="Organization"
+                            defaultOption="Select Organization"
+                            onChange={handleOrganizationId}
+                            options={organizationsOptions}
+                            value={organizationId}
+                            className="margin-0"
+                            icon={organizationTaskIcon}/>
+              </Grid>
+          }
           <Grid item xs={12}>
             <MyInput type='password'
                      name='email'
@@ -112,7 +114,7 @@ const SignUp: FC<ISignUpProps> = ({setPage, type}) => {
             <MyButton className="btn-sm">Sign Up</MyButton>
           </Grid>
           <Grid item xs={12} className="flex-center">
-            <p>Already have an account? <a href="#" onClick={() => setPage('signIn')}>Sign In</a></p>
+            <p>Already have an account? <span className="span-link" onClick={() => setPage('signIn')}>Sign In</span></p>
           </Grid>
         </Grid>
       </form>

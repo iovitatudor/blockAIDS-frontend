@@ -1,22 +1,95 @@
+import {createSlice, PayloadAction} from "@reduxjs/toolkit";
+import {removeSession, setWithExpiry, getWithExpiry} from "../../helpers/authSession";
+import {SpecialistMock} from "../../models/Mocks/Specialist";
+import {ISpecialist} from "../../models/ISpecialist";
+import {IAuthResponse} from '../../models/IAuth';
 import {IUser} from "../../models/IUser";
-import {createSlice} from "@reduxjs/toolkit";
+import {register, login} from "../actions/AuthActionCreator";
 
-interface IUserState {
-  users: IUser[],
-  isLoading: boolean,
-  error: string
+interface AuthState {
+  token: string;
+  id: number;
+  authUser: IUser | ISpecialist;
+  type: 'user' | 'specialist';
+  isLoading: boolean;
+  isLogged: boolean;
+  error: {
+    message: string,
+    statusCode: string,
+  }
 }
 
-const initialState: IUserState = {
-  users: [],
+const initialState: AuthState = {
+  token: '',
+  id: 0,
+  authUser: SpecialistMock,
+  type: 'user',
   isLoading: false,
-  error: '',
-};
+  isLogged: false,
+  error: {
+    message: "",
+    statusCode: "",
+  },
+}
+
+const fulfillAuth = (state: AuthState, action: PayloadAction<IAuthResponse>) => {
+  state.isLoading = false;
+  state.error = {message: "", statusCode: ""};
+  state.token = action.payload.token;
+  state.authUser = action.payload.type === 'user' ? action.payload.user : action.payload.specialist;
+  state.id = state.authUser.id;
+  state.type = action.payload.type;
+  state.isLogged = true;
+  setWithExpiry('auth', JSON.stringify({token: state.token, authUser: state.authUser, type: state.type}), 10800000)
+}
+
+const pendingAuth = (state: AuthState, action: PayloadAction<IAuthResponse>) => {
+  state.isLogged = false;
+  state.isLoading = true;
+}
+
+const rejectAuth = (state: AuthState, action: PayloadAction<{ message: string, statusCode: string }>) => {
+  state.isLogged = false;
+  state.isLoading = false;
+  state.error = action.payload
+}
+
 
 export const authSlice = createSlice({
-  name: 'user',
+  name: 'auth',
   initialState,
-  reducers: {},
+  reducers: {
+    logOut: (state) => {
+      removeSession('auth');
+      state.authUser = SpecialistMock;
+      state.token = '';
+      state.id = 0;
+      state.isLogged = false;
+      return state;
+    },
+    checkAuthData: (state) => {
+      const authUserData = getWithExpiry('auth');
+      if (authUserData) {
+        const parsedAutUserData = JSON.parse(authUserData);
+        state.authUser = parsedAutUserData.authUser;
+        state.token = parsedAutUserData.token;
+        state.id = state.authUser.id;
+        state.type = parsedAutUserData.type;
+        state.isLogged = true;
+      }
+      return state;
+    },
+  },
+  extraReducers: {
+    [register.fulfilled.type]: fulfillAuth,
+    [register.pending.type]: pendingAuth,
+    [register.rejected.type]: rejectAuth,
+    [login.fulfilled.type]: fulfillAuth,
+    [login.pending.type]: pendingAuth,
+    [login.rejected.type]: rejectAuth,
+  }
 })
+
+export const {logOut, checkAuthData} = authSlice.actions;
 
 export default authSlice.reducer;

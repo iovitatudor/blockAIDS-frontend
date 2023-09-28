@@ -5,7 +5,7 @@ import emailIcon from "../../profile/assets/emailIcon.svg";
 import passwordIcon from "../assets/passwordIcon.png";
 import MyButton from "../../../ui/MyButton";
 import {useAppDispatch, useAppSelector} from "../../../hooks/redux";
-import {loginSpecialist} from "../../../store/reducers/Auth/SpecialistAuthSlice"
+import {login} from "../../../store/actions/AuthActionCreator";
 
 interface ISignInProps {
   setPage: (page: string) => void,
@@ -18,7 +18,7 @@ const SignIn: FC<ISignInProps> = ({setPage, type}) => {
   const [error, setError] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const {error: specialistAuthError} = useAppSelector(state => state.specialistAuthReducer)
+  const {error: specialistAuthError} = useAppSelector(state => state.authReducer)
 
   const handleEmail = (event: ChangeEvent<HTMLInputElement>) => setEmail(event.target.value);
   const handlePassword = (event: ChangeEvent<HTMLInputElement>) => setPassword(event.target.value);
@@ -26,7 +26,7 @@ const SignIn: FC<ISignInProps> = ({setPage, type}) => {
   const handleFormSubmit = (event: FormEvent) => {
     event.preventDefault();
     setError('');
-    dispatch(loginSpecialist({email, password, type,}));
+    dispatch(login({email, password, type,}));
   }
 
   useEffect(() => {
@@ -59,16 +59,11 @@ const SignIn: FC<ISignInProps> = ({setPage, type}) => {
           <Grid item xs={12} className="flex-center">
             {error && <Box sx={{color: 'error.main'}}>{error}</Box>}
           </Grid>
-          <Grid item xs={12}>
-            <Grid item xs={12} className="flex-center">
-              {error && <Box sx={{color: 'error.main'}}>{error}</Box>}
-            </Grid>
-          </Grid>
           <Grid item xs={12} className="flex-center">
             <MyButton className="btn-sm">Sign In</MyButton>
           </Grid>
           <Grid item xs={12} className="flex-center">
-            <p>Don't have an account? <a href="#" onClick={() => setPage('signUp')}>Sign Up</a></p>
+            <p>Don't have an account? <span className="span-link" onClick={() => setPage('signUp')}>Sign Up</span></p>
           </Grid>
         </Grid>
       </form>

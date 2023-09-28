@@ -2,16 +2,16 @@ import React, {FC, useEffect} from "react";
 import {Navigate, Outlet, useNavigate} from "react-router-dom";
 import {useAuth} from "../hooks/auth";
 import {useAppDispatch, useAppSelector} from "../hooks/redux";
-import {checkSpecialistData} from "../store/reducers/Auth/SpecialistAuthSlice";
+import {checkAuthData} from "../store/reducers/AuthSlice";
 
 const AuthGuard: FC = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const {isLogged} = useAppSelector(state => state.specialistAuthReducer)
+  const {isLogged} = useAppSelector(state => state.authReducer)
 
   useEffect(() => {
-    dispatch(checkSpecialistData());
-  }, []);
+    dispatch(checkAuthData());
+  }, [dispatch]);
 
   useEffect(() => {
     if (isLogged) {
@@ -19,7 +19,7 @@ const AuthGuard: FC = () => {
     } else {
       navigate('/auth');
     }
-  }, [isLogged]);
+  }, [isLogged, navigate]);
 
   const auth = useAuth();
   return auth ? <Outlet/> : <Navigate to='/auth'/>
