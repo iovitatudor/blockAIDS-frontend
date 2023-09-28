@@ -6,7 +6,7 @@ import {logOut} from '../../../store/reducers/AuthSlice';
 
 const SidebarProfile: FC = () => {
   const dispatch = useAppDispatch();
-  const {isLogged, authUser,type} = useAppSelector(state => state.authReducer)
+  const {isLogged, authUser, type} = useAppSelector(state => state.authReducer)
 
   const signOut = () => {
     dispatch(logOut());
@@ -31,18 +31,18 @@ const SidebarProfile: FC = () => {
                   <Grid item xs={3} className="avatar-area">
                       <Link to="/profile">
                           <Avatar alt={authUser.name}
-                                  src={authUser.avatar}
+                                  src={`http://localhost:4000/${authUser.avatar}`}
                                   sx={{width: 60, height: 60}}/>
                       </Link>
                   </Grid>
-                  <Grid item xs={7} className="info-area">
+                  <Grid item xs={9} className="info-area">
                       <p className="user-name">
                           <Link to="/profile">
                             {authUser.name} ({type})
                           </Link>
                       </p>
                       <p>
-                          {/*<span className="user-status"></span>*/}
+                        {/*<span className="user-status"></span>*/}
                           <span className="user-aids" onClick={signOut}>Logout</span>
                       </p>
                   </Grid>

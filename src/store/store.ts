@@ -2,16 +2,17 @@ import {combineReducers, configureStore} from "@reduxjs/toolkit";
 import {taskTypesApi} from "../api/taskTypesApi";
 import {organizationsApi} from "../api/organizationsApi";
 import {specialistsApi} from "../api/specialistsApi";
+import {usersApi} from "../api/usersApi";
 import {authApi} from "../api/authApi";
 import userReducer from './reducers/UserSlice';
 import authReducer  from "./reducers/AuthSlice";
 
 const rootReducer = combineReducers({
-  userReducer,
   authReducer,
   [taskTypesApi.reducerPath]: taskTypesApi.reducer,
   [organizationsApi.reducerPath]: organizationsApi.reducer,
   [specialistsApi.reducerPath]: specialistsApi.reducer,
+  [usersApi.reducerPath]: usersApi.reducer,
   [authApi.reducerPath]: authApi.reducer,
 });
 
@@ -23,6 +24,7 @@ export const setupStore = () => {
         .concat(taskTypesApi.middleware)
         .concat(organizationsApi.middleware)
         .concat(specialistsApi.middleware)
+        .concat(usersApi.middleware)
         .concat(authApi.middleware)
   });
 };

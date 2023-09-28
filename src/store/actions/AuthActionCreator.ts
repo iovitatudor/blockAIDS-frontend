@@ -7,7 +7,7 @@ export const register = createAsyncThunk(
   'specialistAuth/register',
   async (data: IAuthRegister, thunkAPI) => {
     try {
-      const response = await axios.post<IAuthResponse[]>(`${backendURL}auth/register`, data)
+      const response = await axios.post<IAuthResponse[]>(`${backendURL}/auth/register`, data)
       return response.data;
     } catch (e) {
       const error = e as AxiosError;

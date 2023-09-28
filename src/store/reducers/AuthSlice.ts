@@ -54,11 +54,14 @@ const rejectAuth = (state: AuthState, action: PayloadAction<{ message: string, s
   state.error = action.payload
 }
 
-
 export const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
+    overwriteAuthUser: (state, action: PayloadAction<IUser | ISpecialist>) => {
+      state.authUser = action.payload;
+      setWithExpiry('auth', JSON.stringify({token: state.token, authUser: state.authUser, type: state.type}), 10800000)
+    },
     logOut: (state) => {
       removeSession('auth');
       state.authUser = SpecialistMock;
@@ -90,6 +93,6 @@ export const authSlice = createSlice({
   }
 })
 
-export const {logOut, checkAuthData} = authSlice.actions;
+export const {logOut, checkAuthData, overwriteAuthUser} = authSlice.actions;
 
 export default authSlice.reducer;

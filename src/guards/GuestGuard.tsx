@@ -14,12 +14,12 @@ const GuestGuard: FC = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    if (isLogged) {
-      navigate('/');
-    } else {
-      navigate('/auth');
-    }
-  }, [isLogged, navigate])
+    // if (isLogged) {
+    //   navigate('/');
+    // } else {
+    //   navigate('/auth');
+    // }
+  }, [isLogged])
 
   const auth = useAuth();
   return !auth ? <Outlet/> : <Navigate to='/'/>

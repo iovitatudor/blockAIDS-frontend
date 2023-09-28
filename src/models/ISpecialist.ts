@@ -7,4 +7,5 @@ export interface ISpecialist {
   "jobPosition": string,
   "avatar": string,
   "organization": IOrganizations[] | null,
+  "file"? : File | Blob,
 }

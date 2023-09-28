@@ -13,13 +13,11 @@ const AuthGuard: FC = () => {
     dispatch(checkAuthData());
   }, [dispatch]);
 
-  useEffect(() => {
-    if (isLogged) {
-      navigate('/');
-    } else {
-      navigate('/auth');
-    }
-  }, [isLogged, navigate]);
+  // useEffect(() => {
+  //   if (!isLogged) {
+  //     navigate('/auth');
+  //   }
+  // }, [isLogged]);
 
   const auth = useAuth();
   return auth ? <Outlet/> : <Navigate to='/auth'/>

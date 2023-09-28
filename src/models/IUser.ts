@@ -5,5 +5,6 @@ export interface IUser {
   "phone": string,
   "avatar": string,
   "gender": string,
-  "birthdate": string
+  "birthdate"?: string,
+  "file"?: Blob | File,
 }
