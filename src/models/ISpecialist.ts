@@ -1,5 +1,3 @@
-import {IOrganizations} from "./IOrganizations";
-
 export interface ISpecialist {
   "id": number,
   "name": string,

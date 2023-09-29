@@ -4,11 +4,13 @@ import {organizationsApi} from "../api/organizationsApi";
 import {specialistsApi} from "../api/specialistsApi";
 import {usersApi} from "../api/usersApi";
 import {authApi} from "../api/authApi";
+import {tasksApi} from "../api/tasksApi";
 import userReducer from './reducers/UserSlice';
 import authReducer  from "./reducers/AuthSlice";
 
 const rootReducer = combineReducers({
   authReducer,
+  [tasksApi.reducerPath]: tasksApi.reducer,
   [taskTypesApi.reducerPath]: taskTypesApi.reducer,
   [organizationsApi.reducerPath]: organizationsApi.reducer,
   [specialistsApi.reducerPath]: specialistsApi.reducer,
@@ -22,6 +24,7 @@ export const setupStore = () => {
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware()
         .concat(taskTypesApi.middleware)
+        .concat(tasksApi.middleware)
         .concat(organizationsApi.middleware)
         .concat(specialistsApi.middleware)
         .concat(usersApi.middleware)

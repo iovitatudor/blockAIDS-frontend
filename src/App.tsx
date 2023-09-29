@@ -54,9 +54,9 @@ const App: FC = () => {
                 <Route element={<AuthGuard/>}>
                   <Route path="/" element={<Home/>}/>
                   <Route path="/tasks" element={<Tasks/>}/>
-                  <Route path="/tasks/view" element={<TaskView/>}/>
+                  <Route path="/tasks/view/:id" element={<TaskView/>}/>
                   <Route path="/tasks/create" element={<TaskCreate/>}/>
-                  <Route path="/tasks/update" element={<TaskUpdate/>}/>
+                  <Route path="/tasks/update/:id" element={<TaskUpdate/>}/>
                   <Route path="/profile" element={<Profile/>}/>
                 </Route>
                 <Route element={<GuestGuard/>}>

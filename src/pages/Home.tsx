@@ -4,7 +4,8 @@ import {TasksList, TasksFilter, TasksCalendar} from "../modules/tasks";
 const Home: FC = () => {
   return (
     <>
-      <TasksList Filter={TasksFilter} Calendar={TasksCalendar}/>
+      {/*<TasksList Filter={TasksFilter} Calendar={TasksCalendar}/>*/}
+      <TasksList/>
     </>
   );
 };

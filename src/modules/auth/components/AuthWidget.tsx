@@ -28,7 +28,7 @@ const AuthWidget: FC = () => {
             <div className="auth-option-list">
               <div className={"auth-option-item " + (type === 'user' ? 'active' : '')}
                    onClick={() => setType('user')}>
-                customer
+                patient
               </div>
               <div className={"auth-option-item " + (type === 'specialist' ? 'active' : '')}
                    onClick={() => setType('specialist')}>

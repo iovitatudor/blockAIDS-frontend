@@ -18,7 +18,8 @@ const Tasks: FC = () => {
   return (
     <div>
       <Breadcrumbs breadcrumbs={breadcrumbs}/>
-      <TasksList Filter={TasksFilter} Calendar={TasksCalendar}/>
+      {/*<TasksList Filter={TasksFilter} Calendar={TasksCalendar}/>*/}
+      <TasksList/>
     </div>
   );
 }
