@@ -19,7 +19,7 @@ const TaskCreateWidget: FC = () => {
   const [type, setType] = React.useState('');
   const [address, setAddress] = React.useState('');
   const [specialist, setSpecialist] = React.useState('');
-  const [dateDue, setDateDue] = React.useState<Date | null>(null);
+  const [dateDue, setDateDue] = React.useState<Date | null | undefined>(null);
   const [description, setDescription] = React.useState('');
 
   const {data: taskTypes} = taskTypesApi.useFetchAllTaskTypesQuery();
@@ -54,7 +54,7 @@ const TaskCreateWidget: FC = () => {
   const handleTaskAddress = (event: SelectChangeEvent) => setAddress(event.target.value);
   const handleTaskSpecialist = (event: SelectChangeEvent) => setSpecialist(event.target.value);
   const handleTaskDescription = (event: ChangeEvent<HTMLTextAreaElement>) => setDescription(event.target.value);
-  const handleTaskDateDue = (date: Date | null) => setDateDue(date);
+  const handleTaskDateDue = (date: Date | null | undefined) => setDateDue(date);
 
 
   return (

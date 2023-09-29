@@ -29,6 +29,9 @@ export const usersApi = createApi({
           bodyFormData.append('email', user.email);
           bodyFormData.append('phone', user.phone);
           bodyFormData.append('gender', user.gender);
+          if (user.birthdate) {
+            bodyFormData.append('birthdate', user.birthdate);
+          }
           if (user.file) {
             bodyFormData.append('avatar', user.file);
           }

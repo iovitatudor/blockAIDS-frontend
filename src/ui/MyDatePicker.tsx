@@ -5,10 +5,10 @@ import "../styles/datepicker.scss";
 
 interface IMyDatePickerProps {
   label?: string;
-  selected: Date | null;
+  selected: Date | null | undefined;
   error?: boolean;
   disabled?: boolean;
-  onChange: (date: Date | null) => void;
+  onChange: (date: Date | null | undefined) => void;
   placeholder?: string;
 }
 

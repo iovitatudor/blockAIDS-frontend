@@ -28,13 +28,13 @@ const TaskUpdateWidget: FC = () => {
   const [type, setType] = React.useState('');
   const [address, setAddress] = React.useState('');
   const [specialist, setSpecialist] = React.useState('');
-  const [dateDue, setDateDue] = React.useState<Date | null>(null);
+  const [dateDue, setDateDue] = React.useState<Date | null | undefined>(null);
   const [description, setDescription] = React.useState('');
 
   const handleTaskType = (event: SelectChangeEvent) => setType(event.target.value);
   const handleTaskAddress = (event: SelectChangeEvent) => setAddress(event.target.value);
   const handleTaskSpecialist = (event: SelectChangeEvent) => setSpecialist(event.target.value);
-  const handleTaskDateDue = (date: Date | null) => setDateDue(date);
+  const handleTaskDateDue = (date: Date | null | undefined) => setDateDue(date);
   const handleTaskDescription = (event: ChangeEvent<HTMLTextAreaElement>) => setDescription(event.target.value);
 
   return (

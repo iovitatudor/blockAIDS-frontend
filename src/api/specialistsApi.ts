@@ -2,6 +2,12 @@ import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/dist/query/react";
 import {ISpecialist} from "../models/ISpecialist";
 import {IUser} from "../models/IUser";
 
+interface RTQError {
+  data: {
+    message: string,
+    statusCode: number,
+  }
+}
 export const specialistsApi = createApi({
   reducerPath: 'specialists',
   baseQuery: fetchBaseQuery({
@@ -21,12 +27,13 @@ export const specialistsApi = createApi({
       }),
       providesTags: result => ['Specialists']
     }),
-    updateSpecialist: build.mutation<ISpecialist, ISpecialist>({
+    updateSpecialist: build.mutation<ISpecialist | RTQError, ISpecialist>({
       query: (specialist) => {
         const bodyFormData = new FormData();
         bodyFormData.append('name', specialist.name);
         bodyFormData.append('email', specialist.email);
         bodyFormData.append('job_position', specialist.jobPosition);
+        bodyFormData.append('organizationId', specialist.organizationId);
         if (specialist.file) {
           bodyFormData.append('avatar', specialist.file);
         }

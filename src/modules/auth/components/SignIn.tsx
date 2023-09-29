@@ -57,7 +57,7 @@ const SignIn: FC<ISignInProps> = ({setPage, type}) => {
                      onChange={handlePassword}/>
           </Grid>
           <Grid item xs={12} className="flex-center">
-            {error && <Box sx={{color: 'error.main'}}>{error}</Box>}
+            {error && <Box className="error-area">{error}</Box>}
           </Grid>
           <Grid item xs={12} className="flex-center">
             <MyButton className="btn-sm">Sign In</MyButton>

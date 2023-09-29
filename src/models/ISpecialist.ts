@@ -6,6 +6,6 @@ export interface ISpecialist {
   "email": string,
   "jobPosition": string,
   "avatar": string,
-  "organization": IOrganizations[] | null,
+  "organizationId": string,
   "file"? : File | Blob,
 }

@@ -6,5 +6,5 @@ export const SpecialistMock: ISpecialist = {
   email: 'unknown@email.com',
   jobPosition: 'Unknown',
   avatar: 'Unknown',
-  organization: null,
+  organizationId: '',
 }
