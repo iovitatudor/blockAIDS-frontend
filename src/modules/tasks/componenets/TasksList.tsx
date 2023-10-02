@@ -37,7 +37,7 @@ const TasksList: FC<ITasksList> = (props) => {
 
   useEffect(() => {
     sortTasks('all');
-  }, )
+  }, [tasks])
 
   return (
     <>
@@ -55,26 +55,30 @@ const TasksList: FC<ITasksList> = (props) => {
         )}
         <div className="tasks-top-options">
           <TasksFilter onSort={sortTasks}/>
-          {/*{Filter && <Filter/>}*/}
           <BrowserView>
             <TasksCalendar/>
-            {/*{Calendar && <Calendar/>}*/}
           </BrowserView>
         </div>
-        <div className="tasks-head">
-          <div className="tasks-head-item lg">
-            {type === "user" && "Specialist"}
-            {type === "specialist" && "Patient"}
-          </div>
-          <div className="tasks-head-item md">Task name</div>
-          <div className="tasks-head-item md">Due Date</div>
-          <div className="tasks-head-item xs">Points</div>
-          <div className="tasks-head-item sm">Status</div>
-          <div className="tasks-head-item xs"></div>
-        </div>
-        <div className="tasks-body-wrapper">
-          {filtredTasks && filtredTasks.map((task) => <TasksItem task={task}/>)}
-        </div>
+        {
+          filtredTasks?.length ?
+            <>
+              <div className="tasks-head">
+                <div className="tasks-head-item lg">
+                  {type === "user" && "Specialist"}
+                  {type === "specialist" && "Patient"}
+                </div>
+                <div className="tasks-head-item md">Task Name</div>
+                <div className="tasks-head-item md">Due Date</div>
+                <div className="tasks-head-item sm">Tokens</div>
+                <div className="tasks-head-item sm">Status</div>
+                <div className="tasks-head-item xs"></div>
+              </div>
+              <div className="tasks-body-wrapper">
+                {filtredTasks && filtredTasks.map((task) => <TasksItem task={task} key={task.id}/>)}
+              </div>
+            </>
+            : ''
+        }
       </div>
       <div className="task-options">
         <Link to="/tasks/create" style={{display: 'inline-block'}}>

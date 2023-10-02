@@ -1,0 +1,40 @@
+@import "../../../styles/variables";
+
+.notifications-area {
+  margin-top: 50px;
+  position: relative;
+
+  .set-as-read {
+    color: $blue4;
+    font-size: 15px;
+    text-align: right;
+    position: absolute;
+    right: 10px;
+    top: -50px;
+    cursor: pointer;
+
+    &:hover {
+      color: $blue3;
+    }
+  }
+
+  .notification-item {
+    //display: flex;
+    //justify-content: space-between;
+    //flex-direction: row;
+    //margin: 0 auto;
+
+    .notification-body {
+      cursor: pointer;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    .notification-time {
+
+    }
+  }
+
+}

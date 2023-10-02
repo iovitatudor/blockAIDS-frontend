@@ -1,6 +1,15 @@
+import {ITask} from "./ITask";
+import {IUser} from "./IUser";
+import {ISpecialist} from "./ISpecialist";
+
 export interface INotification {
   id: number,
-  status: string,
+  userStatus: string,
+  specialistStatus: string,
   userMessage: string,
   specialistMessage: string,
+  task: ITask,
+  user: IUser,
+  specialist: ISpecialist,
+  created: string,
 }

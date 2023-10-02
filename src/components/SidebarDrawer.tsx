@@ -2,14 +2,27 @@ import React, {FC, useState} from "react";
 import {Box, Button, Drawer} from "@mui/material";
 import MenuIcon from '@mui/icons-material/Menu';
 import {Sidebar} from "../modules/sidebar";
-import {menus} from "../api/menu";
+import {getMenus} from "../api/menu";
 import MenuIcon1 from '../styles/assets/MenuIcon.svg';
+import {notificationsApi} from "../api/notificationsApi";
+import {useAppSelector} from "../hooks/redux";
 
 const SidebarDrawer: FC = () => {
+  const {isLogged, authUser, type} = useAppSelector(state => state.authReducer)
+
+  let fetchNotifications = notificationsApi.useFetchScheduledNotificationsByUserIdQuery;
+
+  if (type === 'specialist') {
+    fetchNotifications = notificationsApi.useFetchScheduledNotificationsBySpecialistIdQuery;
+  }
+
+  const {data: notifications,} = fetchNotifications(authUser.id);
   const [drawer, setDrawer] = useState(false);
   const toggleDrawer = () => {
     setDrawer(!drawer);
   };
+
+  const menus = getMenus(notifications?.length);
 
   return (
     <>

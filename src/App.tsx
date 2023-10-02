@@ -10,20 +10,31 @@ import TaskUpdate from "./pages/TaskUpdate";
 import Tasks from "./pages/Tasks";
 import Profile from "./pages/Profile";
 import Auth from "./pages/Auth";
+import Notifications from "./pages/Notifications";
 import SidebarDrawer from "./components/SidebarDrawer";
 import {BrowserView, MobileView} from 'react-device-detect';
 import HomeIcon from './styles/assets/homeIcon.svg';
 import TaskIcon from './styles/assets/taskIcon.png';
 import TreatmentIcon from './styles/assets/TreatmentIcon.svg';
 import ProfileIcon from './styles/assets/ProfileIcon.svg';
-import {menus} from "./api/menu";
+import {getMenus} from "./api/menu";
 import {footerMenus} from "./api/footerMenu";
 import AuthGuard from "./guards/AuthGuard";
 import GuestGuard from "./guards/GuestGuard";
 import {useAppSelector} from "./hooks/redux";
+import {notificationsApi} from "./api/notificationsApi";
 
 const App: FC = () => {
-  const {isLogged} = useAppSelector(state => state.authReducer)
+  const {isLogged, authUser, type} = useAppSelector(state => state.authReducer)
+  let fetchNotifications = notificationsApi.useFetchScheduledNotificationsByUserIdQuery;
+
+  if (type === 'specialist') {
+    fetchNotifications = notificationsApi.useFetchScheduledNotificationsBySpecialistIdQuery;
+  }
+
+  const {data: notifications,} = fetchNotifications(authUser.id);
+
+  const menus = getMenus(notifications?.length);
 
   return (
     <React.Fragment>
@@ -58,6 +69,7 @@ const App: FC = () => {
                   <Route path="/tasks/create" element={<TaskCreate/>}/>
                   <Route path="/tasks/update/:id" element={<TaskUpdate/>}/>
                   <Route path="/profile" element={<Profile/>}/>
+                  <Route path="/notifications" element={<Notifications/>}/>
                 </Route>
                 <Route element={<GuestGuard/>}>
                   <Route path="/auth" element={<Auth/>}/>

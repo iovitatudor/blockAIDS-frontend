@@ -5,6 +5,7 @@ import {Link} from "react-router-dom";
 import {BrowserView, MobileView} from 'react-device-detect';
 import {ITask} from "../../../models/ITask";
 import {useAppSelector} from "../../../hooks/redux";
+import {TaskStatusesEnum} from "../enums/TaskStatusesEnum";
 
 interface ITasksItemProps {
   task: ITask,
@@ -38,9 +39,13 @@ const TasksItem: FC<ITasksItemProps> = ({task}) => {
         }
         <div className="tasks-body-item md">{task.name}</div>
         <div className="tasks-body-item md">{new Date(task.dateDue).toDateString()}</div>
-        <div className="tasks-body-item xs">323</div>
+        <div className="tasks-body-item sm">{task.taskType.reward} SOL</div>
         <div className="tasks-body-item sm">
-          <span className="badge badge-progress">{task.status}</span>
+          {task.status === TaskStatusesEnum.InProgress && <span className="badge badge-progress">{task.status}</span>}
+          {task.status === TaskStatusesEnum.Done && <span className="badge badge-done">{task.status}</span>}
+          {task.status === TaskStatusesEnum.Overdue && <span className="badge badge-overdue">{task.status}</span>}
+          {task.status === TaskStatusesEnum.Undone && <span className="badge badge-undone">{task.status}</span>}
+
         </div>
         <div className="tasks-body-item xs">
           <div className="details">

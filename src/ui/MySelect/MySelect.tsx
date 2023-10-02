@@ -12,7 +12,7 @@ export interface ISelectOptions {
 interface IMySelectProps {
   label?: string;
   value: string | undefined;
-  defaultOption: string;
+  defaultOption?: string;
   options: ISelectOptions[];
   icon?: string;
   error?: boolean;

@@ -7,6 +7,7 @@ import {authApi} from "../api/authApi";
 import {tasksApi} from "../api/tasksApi";
 import userReducer from './reducers/UserSlice';
 import authReducer  from "./reducers/AuthSlice";
+import {notificationsApi} from "../api/notificationsApi";
 
 const rootReducer = combineReducers({
   authReducer,
@@ -16,6 +17,7 @@ const rootReducer = combineReducers({
   [specialistsApi.reducerPath]: specialistsApi.reducer,
   [usersApi.reducerPath]: usersApi.reducer,
   [authApi.reducerPath]: authApi.reducer,
+  [notificationsApi.reducerPath]: notificationsApi.reducer,
 });
 
 export const setupStore = () => {
@@ -29,6 +31,7 @@ export const setupStore = () => {
         .concat(specialistsApi.middleware)
         .concat(usersApi.middleware)
         .concat(authApi.middleware)
+        .concat(notificationsApi.middleware)
   });
 };
 
