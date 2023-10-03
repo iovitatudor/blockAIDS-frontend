@@ -66,7 +66,7 @@ const ProfileUser: FC = () => {
     event.preventDefault();
     setError('');
     try {
-      await updateUser({id: authUser.id, name, email, avatar: '', file, phone, gender}).unwrap();
+      await updateUser({id: authUser.id, name, email, avatar: '', file, phone, gender, birthdate: birthdate?.toISOString()}).unwrap();
       showSuccessAnimation();
     } catch (err) {
       if (isFetchBaseQueryError(err)) {

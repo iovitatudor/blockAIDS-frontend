@@ -17,6 +17,7 @@
     "@types/react-dom": "^18.2.7",
     "@types/react-redux": "^7.1.26",
     "axios": "^1.5.1",
+    "moment": "^2.29.4",
     "react": "^18.2.0",
     "react-calendar": "^4.6.0",
     "react-datepicker": "^4.16.0",

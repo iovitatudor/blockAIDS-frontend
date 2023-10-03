@@ -32,13 +32,23 @@ const App: FC = () => {
     fetchNotifications = notificationsApi.useFetchScheduledNotificationsBySpecialistIdQuery;
   }
 
-  const {data: notifications,} = fetchNotifications(authUser.id);
+  const {data: notifications} = fetchNotifications(authUser.id, {pollingInterval: 35000});
 
   const menus = getMenus(notifications?.length);
 
   return (
     <React.Fragment>
       <BrowserRouter>
+        {
+          notifications?.length ?
+            <Link to="/notifications">
+              <div className="notifications-bar">
+                You have {notifications?.length} new notifications,click here to see details
+              </div>
+            </Link>
+            : ''
+        }
+
         <div className="wrapper">
           {isLogged &&
               <>

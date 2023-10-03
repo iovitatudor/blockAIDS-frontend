@@ -65,8 +65,9 @@ const TaskCreateWidget: FC = () => {
   useEffect(() => {
     if (!specialists) return;
     setSpecialistsOptions(specialists.map(specialist => ({
-      name: `${specialist.name} <${specialist.email}>`,
-      value: specialist.id.toString()
+      name: `${specialist.name}`,
+      value: specialist.id.toString(),
+      icon: `http://localhost:4000/${specialist.avatar}`,
     } as ISelectOptions)));
     if (type === 'specialist') setSpecialist(authUser.id.toString());
   }, [specialists])
@@ -74,8 +75,9 @@ const TaskCreateWidget: FC = () => {
   useEffect(() => {
     if (!users) return;
     setUsersOptions(users.map(user => ({
-      name: `${user.name} <${user.email}>`,
-      value: user.id.toString()
+      name: `${user.name}`,
+      value: user.id.toString(),
+      icon: `http://localhost:4000/${user.avatar}`,
     } as ISelectOptions)));
     if (type === 'user') setUser(authUser.id.toString());
   }, [users])
@@ -100,7 +102,7 @@ const TaskCreateWidget: FC = () => {
     try {
       const newTask = await createTask({
         name,
-        dateDue: dateDue?.toISOString(),
+        due_date : dateDue?.toISOString(),
         status: "In progress",
         points: 0,
         description,
@@ -109,9 +111,7 @@ const TaskCreateWidget: FC = () => {
         taskTypeId: taskType,
         organizationId: organization,
       }).unwrap();
-
       await setNotification(newTask);
-
       showSuccessAnimation();
     } catch (err) {
       if (isFetchBaseQueryError(err)) {
@@ -125,24 +125,20 @@ const TaskCreateWidget: FC = () => {
 
   const setNotification = async (task: ITask) => {
     const userMessage =
-      type === 'specialist' ? `${task.specialist.name} have been created ${name} task!` : `You have been created ${name} task!`;
+      type === 'specialist' ? `${task.specialist.name} has created ${name} task!` : `You have created ${name} task!`;
     const specialistMessage =
-      type === 'specialist' ? `You have been created ${name} task for ${task.user.name}!` : `${task.user.name} have been created ${name} task `;
+      type === 'specialist' ? `You have created ${name} task for ${task.user.name}!` : `${task.user.name} has created ${name} task `;
 
-    try {
-      if (task) {
-        await createNotification({
-          taskId: task.id,
-          userId: Number(user),
-          specialistId: Number(specialist),
-          user_status: NotificationStatusEnum.scheduled,
-          specialist_status: NotificationStatusEnum.scheduled,
-          user_message: userMessage,
-          specialist_message: specialistMessage,
-        }).unwrap();
-      }
-    } catch (e) {
-      console.log(e);
+    if (task) {
+      await createNotification({
+        taskId: task.id,
+        userId: Number(user),
+        specialistId: Number(specialist),
+        user_status: NotificationStatusEnum.scheduled,
+        specialist_status: NotificationStatusEnum.scheduled,
+        user_message: userMessage,
+        specialist_message: specialistMessage,
+      }).unwrap();
     }
   }
 

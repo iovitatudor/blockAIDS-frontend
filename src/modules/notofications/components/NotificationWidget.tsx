@@ -10,23 +10,40 @@ import {INotification} from "../../../models/INotification";
 const NotificationWidget: FC = () => {
   const navigate = useNavigate();
   const {type, authUser} = useAppSelector(state => state.authReducer);
-  const {data: notifications,} = notificationsApi.useFetchAllNotificationsByUserIdQuery(1);
+  let fetchNotifications = notificationsApi.useFetchAllNotificationsByUserIdQuery;
+  if (type === 'specialist') {
+    fetchNotifications = notificationsApi.useFetchAllNotificationsBySpecialistIdQuery;
+  }
+  const {data: notifications, refetch} = fetchNotifications(authUser.id);
   const [updateNotification] = notificationsApi.useUpdateNotificationMutation();
+
+  useEffect(()=> {
+    refetch();
+  }, [])
 
   const markAllNotificationsAsRead = () => {
     if (notifications) {
       notifications.map(notification => {
-        if (notification.userStatus === NotificationStatusEnum.scheduled) {
-          updateNotification({
-            id: notification.id,
-            user_status: NotificationStatusEnum.completed,
-          });
+        if (type === 'user') {
+          if (notification.userStatus === NotificationStatusEnum.scheduled) {
+            updateNotification({
+              id: notification.id,
+              user_status: NotificationStatusEnum.completed,
+            });
+          }
+        } else {
+          if (notification.specialistStatus === NotificationStatusEnum.scheduled) {
+            updateNotification({
+              id: notification.id,
+              specialist_status: NotificationStatusEnum.completed,
+            });
+          }
         }
-      })
+      });
     }
   }
 
-  const markNotificationAsRead = (notification: INotification) => {
+  const markUserNotificationAsRead = (notification: INotification) => {
     if (notification.userStatus === NotificationStatusEnum.scheduled) {
       updateNotification({
         id: notification.id,
@@ -35,6 +52,16 @@ const NotificationWidget: FC = () => {
     }
     navigate(`/tasks/view/${notification.task.id}`);
   }
+  const markSpecialistNotificationAsRead = (notification: INotification) => {
+    if (notification.specialistStatus === NotificationStatusEnum.scheduled) {
+      updateNotification({
+        id: notification.id,
+        specialist_status: NotificationStatusEnum.completed,
+      });
+    }
+    navigate(`/tasks/view/${notification.task.id}`);
+  }
+
   return (
     <div className="notifications-area">
       <p className="set-as-read" onClick={markAllNotificationsAsRead}>Mark all as read</p>
@@ -47,7 +74,7 @@ const NotificationWidget: FC = () => {
                   <Alert
                     severity={notification.specialistStatus === NotificationStatusEnum.scheduled ? 'info' : 'success'}>
                     <div className="notification-item">
-                      <p className="notification-body" onClick={() => markNotificationAsRead(notification)}>
+                      <p className="notification-body" onClick={() => markSpecialistNotificationAsRead(notification)}>
                         {notification.specialistMessage}&nbsp;Click here to see more details
                       </p>
                       <p className="notification-time"> {new Date(notification.created).toLocaleString()}</p>
@@ -56,7 +83,7 @@ const NotificationWidget: FC = () => {
                   :
                   <Alert severity={notification.userStatus === NotificationStatusEnum.scheduled ? 'info' : 'success'}>
                     <div className="notification-item">
-                      <p className="notification-body" onClick={() => markNotificationAsRead(notification)}>
+                      <p className="notification-body" onClick={() => markUserNotificationAsRead(notification)}>
                         {notification.userMessage}&nbsp;Click here to see more details
                       </p>
                       <p className="notification-time"> {new Date(notification.created).toLocaleString()}</p>

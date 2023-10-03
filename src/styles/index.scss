@@ -27,9 +27,17 @@ body {
   display: none !important;
 }
 
+.notifications-bar {
+  text-align: center;
+  width: 100%;
+  background-color: $blue4;
+  color: #FFF;
+  padding: 10px 20px;
+}
+
 .wrapper {
   max-width: 1920px;
-  margin: 0 auto;
+  margin: auto;
   display: flex;
   padding: 0 15px;
 
@@ -102,6 +110,10 @@ input:-webkit-autofill:active {
     font-size: 16px;
     font-family: 'Satoshi-Light', serif;
   }
+}
+
+.MuiInputBase-input {
+  display: flex !important;
 }
 
 .css-1d3z3hw-MuiOutlinedInput-notchedOutline {

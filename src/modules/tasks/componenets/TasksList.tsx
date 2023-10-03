@@ -17,7 +17,7 @@ interface ITasksList {
 
 const TasksList: FC<ITasksList> = (props) => {
   const {type, authUser} = useAppSelector(state => state.authReducer);
-  const {Filter, Calendar, heading} = props;
+  const {Calendar, heading} = props;
   const [filtredTasks, setFiltredTasks] = useState<ITask[] | undefined>();
   let fetchTasks = tasksApi.useFetchAllTasksByUserIdQuery;
   if (type === 'specialist') {
@@ -77,7 +77,7 @@ const TasksList: FC<ITasksList> = (props) => {
                 {filtredTasks && filtredTasks.map((task) => <TasksItem task={task} key={task.id}/>)}
               </div>
             </>
-            : ''
+            : <p style={{textAlign: 'center'}}>There is not any tasks, create the first one</p>
         }
       </div>
       <div className="task-options">

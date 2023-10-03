@@ -5,7 +5,7 @@ export interface ITaskCreator {
   taskTypeId: string,
   organizationId: string,
   name: string,
-  dateDue?: string,
+  due_date?: string | null,
   status: string,
   points: number,
   description: string

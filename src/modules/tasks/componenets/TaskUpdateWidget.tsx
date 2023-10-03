@@ -20,12 +20,16 @@ import {isErrorWithMessage, isFetchBaseQueryError} from "../../../helpers/errors
 import {TaskStatusesEnum} from "../enums/TaskStatusesEnum";
 import {useAppSelector} from "../../../hooks/redux";
 import {usersApi} from "../../../api/usersApi";
+import {ITask} from "../../../models/ITask";
+import {NotificationStatusEnum} from "../../notofications/enums/NotificationStatusEnum";
+import {notificationsApi} from "../../../api/notificationsApi";
 
 const TaskUpdateWidget: FC = () => {
   const {id} = useParams()
   const {data: task} = tasksApi.useFetchTaskByIdQuery(Number(id));
-  const {type, authUser} = useAppSelector(state => state.authReducer);
+  const {type} = useAppSelector(state => state.authReducer);
   const [updateTask] = tasksApi.useUpdateTaskMutation();
+  const [createNotification] = notificationsApi.useCreateNotificationMutation();
 
   const [taskTypesOptions, setTaskTypesOptions] = useState<ISelectOptions[]>([]);
   const [organizationsOptions, setOrganizationsOptions] = useState<ISelectOptions[]>([]);
@@ -66,14 +70,18 @@ const TaskUpdateWidget: FC = () => {
   useEffect(() => {
     if (!specialists) return;
     setSpecialistsOptions(specialists.map(specialist => ({
-      name: `${specialist.name} <${specialist.email}>`, value: specialist.id.toString()
+      name: `${specialist.name}`,
+      value: specialist.id.toString(),
+      icon: `http://localhost:4000/${specialist.avatar}`,
     } as ISelectOptions)));
   }, [specialists])
 
   useEffect(() => {
     if (!users) return;
     setUsersOptions(users.map(user => ({
-      name: `${user.name} <${user.email}>`, value: user.id.toString()
+      name: `${user.name}`,
+      value: user.id.toString(),
+      icon: `http://localhost:4000/${user.avatar}`,
     } as ISelectOptions)));
   }, [users])
 
@@ -115,7 +123,7 @@ const TaskUpdateWidget: FC = () => {
     setError('');
     try {
       if (task) {
-        await updateTask({
+        const newTask = await updateTask({
           id: task.id,
           userId: task.user.id.toString(),
           specialistId: specialist,
@@ -124,8 +132,10 @@ const TaskUpdateWidget: FC = () => {
           name,
           status,
           points: 0,
-          description
+          description,
+          due_date : dateDue?.toISOString(),
         }).unwrap();
+        await setNotification(newTask);
         showSuccessAnimation();
       }
     } catch (err) {
@@ -135,6 +145,25 @@ const TaskUpdateWidget: FC = () => {
       } else if (isErrorWithMessage(err)) {
         setError(err.message);
       }
+    }
+  }
+
+  const setNotification = async (task: ITask) => {
+    const userMessage =
+      type === 'specialist' ? `${task.specialist.name} has updated ${name} task!` : `You have updated ${name} task!`;
+    const specialistMessage =
+      type === 'specialist' ? `You have updated ${name} task for ${task.user.name}!` : `${task.user.name} has updated ${name} task `;
+
+    if (task) {
+      await createNotification({
+        taskId: task.id,
+        userId: Number(user),
+        specialistId: Number(specialist),
+        user_status: NotificationStatusEnum.scheduled,
+        specialist_status: NotificationStatusEnum.scheduled,
+        user_message: userMessage,
+        specialist_message: specialistMessage,
+      }).unwrap();
     }
   }
 

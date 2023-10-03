@@ -217,4 +217,19 @@
   }
 }
 
+.highlightIn {
+  border: 1px solid red !important;
+}
+
+.highlightDone {
+  border: 1px solid black !important;
+}
+
+.highlightUndone {
+  border: 1px solid green !important;
+}
+
+.highlightOverdue {
+  border: 1px solid blue !important;
+}
 
