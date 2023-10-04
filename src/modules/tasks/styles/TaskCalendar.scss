@@ -8,6 +8,7 @@
   width: 100%;
   height: 100vh;
   z-index: 1;
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
 .tasks-calendar {
@@ -218,18 +219,22 @@
 }
 
 .highlightIn {
-  border: 1px solid red !important;
+  background-color: #D1FAF9;
+  color: #13C2BD;
 }
 
 .highlightDone {
-  border: 1px solid black !important;
+  background-color: $green15;
+  color: $green3;
 }
 
 .highlightUndone {
-  border: 1px solid green !important;
+  background-color: $red15;
+  color: $red3;
 }
 
 .highlightOverdue {
-  border: 1px solid blue !important;
+  background-color: $orange0;
+  color: $orange3;
 }
 

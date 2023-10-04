@@ -43,7 +43,7 @@ const App: FC = () => {
           notifications?.length ?
             <Link to="/notifications">
               <div className="notifications-bar">
-                You have {notifications?.length} new notifications,click here to see details
+                You have {notifications?.length} new notifications, click here for more details
               </div>
             </Link>
             : ''
