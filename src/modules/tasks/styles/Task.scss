@@ -70,69 +70,8 @@
         justify-content: right;
         -webkit-transform: translateZ(0); /* webkit flicker fix */
         -webkit-font-smoothing: antialiased; /* webkit text rendering fix */
-
-        .tooltip {
-          //background: #FFF;
-          color: $blue3;
-          display: block;
-          right: -20px;
-          bottom: -50px;
-          margin-bottom: 15px;
-          opacity: 0;
-          pointer-events: none;
-          position: absolute;
-          width: 100px;
-          transform: translateY(10px);
-          transition: all .25s ease-out;
-          box-shadow: 0px 8px 24px -4px rgba(173, 176, 184, 0.08), 0px 6px 12px -6px rgba(173, 176, 184, 0.12);
-          padding: 8px;
-          border-radius: 4px;
-        }
-
-        .tooltip:before {
-          bottom: -20px;
-          content: " ";
-          display: block;
-          height: 20px;
-          left: 0;
-          position: absolute;
-          width: 100%;
-        }
-
-        &:hover .tooltip {
-          opacity: 1;
-          pointer-events: auto;
-          transform: translateY(0px);
-        }
       }
     }
-  }
-
-  .badge {
-    padding: 8px 16px;
-    border-radius: 16px;
-    text-align: center;
-    width: 115px;
-  }
-
-  .badge-undone {
-    background-color: $red15;
-    color: $red3;
-  }
-
-  .badge-done {
-    background-color: $green15;
-    color: $green3;
-  }
-
-  .badge-overdue {
-    background-color: $orange0;
-    color: $orange3;
-  }
-
-  .badge-progress {
-    background-color: $blue15;
-    color: $blue3;
   }
 
   .lg {
@@ -244,6 +183,15 @@
 .tasks-dialog {
   .MuiPaper-root {
     background-color: $blue1;
+  }
+
+  .flex-space-between {
+    display: flex;
+    justify-content: space-between;
+
+    .MuiSvgIcon-root {
+      cursor: pointer;
+    }
   }
 
 }
@@ -508,5 +456,42 @@
       text-align: center;
     }
   }
+}
+
+.context-link {
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+
+  svg {
+    margin-right: 10px;
+  }
+}
+
+.badge {
+  padding: 8px 16px;
+  border-radius: 16px;
+  text-align: center;
+  width: 115px;
+}
+
+.badge-undone {
+  background-color: $red15;
+  color: $red3;
+}
+
+.badge-done {
+  background-color: $green15;
+  color: $green3;
+}
+
+.badge-overdue {
+  background-color: $orange0;
+  color: $orange3;
+}
+
+.badge-progress {
+  background-color: $blue15;
+  color: $blue3;
 }
 

@@ -13,6 +13,7 @@ import {
   ListItem, ListItemAvatar, ListItemText,
 } from "@mui/material";
 import LinkIcon from '@mui/icons-material/Link';
+import CloseIcon from '@mui/icons-material/Close';
 import {tasksApi} from "../../../api/tasksApi";
 import {useAppSelector} from "../../../hooks/redux";
 import {TaskStatusesEnum} from "../enums/TaskStatusesEnum";
@@ -100,28 +101,33 @@ const TasksCalendar: FC = () => {
         fullWidth={true}
         className="tasks-dialog"
       >
-        <DialogTitle id="alert-dialog-title">{`Tasks for ${chooseDate}`}</DialogTitle>
+        <DialogTitle id="alert-dialog-title" className="flex-space-between">
+          {`Tasks for ${chooseDate}`}
+          <CloseIcon onClick={toggleDisplayDialog}/>
+        </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
             <div>
               <List dense={true} disablePadding={true}>
                 {
                   foundTasks && foundTasks.map(task => (
-                    <ListItem
-                      disablePadding={true}
-                      secondaryAction={
-                        <IconButton edge="end" aria-label="delete">
-                          {<Link to={`/tasks/view/${task.id}`}><LinkIcon/></Link>}
-                        </IconButton>}>
-                      <ListItemAvatar>
-                        <Avatar sx={{width: 32, height: 32}}
-                                src={`http://localhost:4000/${task.specialist.avatar}`}></Avatar>
-                      </ListItemAvatar>
-                      <ListItemText
-                        primary={task.name}
-                        secondary={task.specialist.name}
-                      />
-                    </ListItem>
+                    <Link to={`/tasks/view/${task.id}`}>
+                      <ListItem
+                        disablePadding={true}
+                        secondaryAction={
+                          <IconButton edge="end" aria-label="delete">
+                            {<Link to={`/tasks/view/${task.id}`}><LinkIcon/></Link>}
+                          </IconButton>}>
+                        <ListItemAvatar>
+                          <Avatar sx={{width: 32, height: 32}}
+                                  src={`http://localhost:4000/${task.specialist.avatar}`}></Avatar>
+                        </ListItemAvatar>
+                        <ListItemText
+                          primary={task.name}
+                          secondary={task.specialist.name}
+                        />
+                      </ListItem>
+                    </Link>
                   ))
                 }
               </List>

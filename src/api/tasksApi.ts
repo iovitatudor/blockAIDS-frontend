@@ -51,9 +51,9 @@ export const tasksApi = createApi({
       },
       invalidatesTags: ['Task']
     }),
-    deleteTaskType: build.mutation<ITask, ITaskCreator>({
-      query: (taskType) => ({
-        url: `/tasks/${taskType.id}`,
+    deleteTask: build.mutation<ITask, number | undefined>({
+      query: (id) => ({
+        url: `/tasks/${id}`,
         method: 'DELETE',
       }),
       invalidatesTags: ['Task']
