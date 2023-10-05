@@ -10,7 +10,7 @@ import {
   DialogTitle,
   IconButton,
   List,
-  ListItem, ListItemAvatar, ListItemText,
+  ListItem, ListItemAvatar, ListItemText, Button,
 } from "@mui/material";
 import LinkIcon from '@mui/icons-material/Link';
 import CloseIcon from '@mui/icons-material/Close';
@@ -19,6 +19,7 @@ import {useAppSelector} from "../../../hooks/redux";
 import {TaskStatusesEnum} from "../enums/TaskStatusesEnum";
 import {ITask} from "../../../models/ITask";
 import "../styles/TaskCalendar.scss";
+import CalendarIcon from "../assets/calendar-icon.png";
 
 type CalendarValuePiece = Date | null;
 type CalendarValue = CalendarValuePiece | [CalendarValuePiece, CalendarValuePiece];
@@ -73,16 +74,16 @@ const TasksCalendar: FC = () => {
 
   return (
     <div className="tasks-calendar">
-      <p onClick={toggleDisplayCalendar}>
-        <i className="icon"></i>
+      <Button onClick={toggleDisplayCalendar} className="tasks-calendar-btn">
+        <img src={CalendarIcon} alt=""/>
         View in calendar
-      </p>
+      </Button>
       {
         displayCalendar && (<>
           <div className="tooltip-background" onClick={toggleDisplayCalendar}></div>
           <div className="calendar-tooltip">
             <div className="calendar-tooltip-inside">
-              <h4>Set a Day</h4>
+              <h4>Choose a Day</h4>
               <Calendar onChange={handleCalendar} value={calendarValue}
                         tileClassName={({date, view}) => {
                           const foundDate = markedDates.find(markedDate => markedDate.date === moment(date).format("DD-MM-YYYY"));

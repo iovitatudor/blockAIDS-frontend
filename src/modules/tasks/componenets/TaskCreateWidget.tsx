@@ -20,8 +20,10 @@ import {isErrorWithMessage, isFetchBaseQueryError} from "../../../helpers/errors
 import DoneAlert from "../../../components/DoneAlert";
 import {NotificationStatusEnum} from "../../notofications/enums/NotificationStatusEnum";
 import {ITask} from "../../../models/ITask";
+import {useNavigate} from "react-router-dom";
 
 const TaskCreateWidget: FC = () => {
+  const navigate = useNavigate();
   const {type, authUser} = useAppSelector(state => state.authReducer);
   const [createTask] = tasksApi.useCreateTaskMutation();
   const [createNotification] = notificationsApi.useCreateNotificationMutation();
@@ -113,6 +115,7 @@ const TaskCreateWidget: FC = () => {
       }).unwrap();
       await setNotification(newTask);
       showSuccessAnimation();
+      setTimeout(() => navigate('/tasks'), 1100);
     } catch (err) {
       if (isFetchBaseQueryError(err)) {
         const errMsg = 'error' in err ? err.error : JSON.stringify(err.data)

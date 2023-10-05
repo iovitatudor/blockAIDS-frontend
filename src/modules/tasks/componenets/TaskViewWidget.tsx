@@ -9,6 +9,8 @@ import MyButton from "../../../ui/MyButton";
 import {Link, useParams} from "react-router-dom";
 import {TasksList} from "../index";
 import {tasksApi} from "../../../api/tasksApi";
+import {TaskStatusesEnum} from "../enums/TaskStatusesEnum";
+import PaidOutlinedIcon from '@mui/icons-material/PaidOutlined';
 
 const TaskViewWidget: FC = () => {
   const {id} = useParams()
@@ -29,7 +31,8 @@ const TaskViewWidget: FC = () => {
                               Patient
                           </div>
                           <div className="option">
-                              <Avatar className="avatar" sx={{width: 32, height: 32}} src={`http://localhost:4000/${task.user.avatar}`}></Avatar>
+                              <Avatar className="avatar" sx={{width: 32, height: 32}}
+                                      src={`http://localhost:4000/${task.user.avatar}`}></Avatar>
                               <div>{task.user.name}</div>
                           </div>
                       </Grid>
@@ -39,7 +42,8 @@ const TaskViewWidget: FC = () => {
                               Specialist
                           </div>
                           <div className="option">
-                              <Avatar className="avatar" sx={{width: 32, height: 32}} src={`http://localhost:4000/${task.specialist.avatar}`}></Avatar>
+                              <Avatar className="avatar" sx={{width: 32, height: 32}}
+                                      src={`http://localhost:4000/${task.specialist.avatar}`}></Avatar>
                               <div>{task.specialist.name}</div>
                           </div>
                       </Grid>
@@ -48,8 +52,7 @@ const TaskViewWidget: FC = () => {
                               <i className="icon" style={{backgroundImage: `url(${organizationIcon})`}}></i>
                               Organization
                           </div>
-                          <div className="option option-block">
-                            {/*<b>Healthy Life Clinic,</b>*/}
+                          <div className="option">
                               <span>{task.organization.name}</span>
                           </div>
                       </Grid>
@@ -68,7 +71,23 @@ const TaskViewWidget: FC = () => {
                               Status
                           </div>
                           <div className="option">
-                              <span className="badge badge-progress">{task.status}</span>
+                            {task.status === TaskStatusesEnum.InProgress &&
+                                <span className="badge badge-progress">{task.status}</span>}
+                            {task.status === TaskStatusesEnum.Done &&
+                                <span className="badge badge-done">{task.status}</span>}
+                            {task.status === TaskStatusesEnum.Overdue &&
+                                <span className="badge badge-overdue">{task.status}</span>}
+                            {task.status === TaskStatusesEnum.Undone &&
+                                <span className="badge badge-undone">{task.status}</span>}
+                          </div>
+                      </Grid>
+                      <Grid item sm={6} xs={12} className="task-option">
+                          <div className="option-label">
+                              <i className="icon"><PaidOutlinedIcon sx={{width: 26, height: 26}}/></i>
+                              Reward
+                          </div>
+                          <div className="option">
+                              <span>{task.taskType.reward} SOL</span>
                           </div>
                       </Grid>
                   </Grid>

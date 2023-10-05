@@ -41,10 +41,10 @@ const FooterWidget: FC<IFooterProps> = (props) => {
               <FooterContacts/>
             </div>
           </Grid>
-          <Grid item sm={4} xs={12}>
+          <Grid item sm={4} xs={6}>
             <FooterMenuList menuList={menu}/>
           </Grid>
-          <Grid item sm={4} xs={12}>
+          <Grid item sm={4} xs={6}>
             <FooterMenuList menuList={about}/>
             <FooterMenuList menuList={policies}/>
           </Grid>

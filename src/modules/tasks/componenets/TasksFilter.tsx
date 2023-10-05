@@ -65,7 +65,7 @@ const TasksFilter: FC<ITasksFilterProps> = ({onSort}) => {
            onClick={event => sortTasks(TaskStatusesEnum.Overdue)}>Overdue
         {/*<span>4</span>*/}
       </div>
-      <div className={`filter-option ${overdueActiveClass && 'active-option'}`}
+      <div className={`filter-option ${undoneActiveClass && 'active-option'}`}
            onClick={event => sortTasks(TaskStatusesEnum.Undone)}>Undone
         {/*<span>4</span>*/}
       </div>

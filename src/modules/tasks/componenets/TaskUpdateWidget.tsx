@@ -6,7 +6,6 @@ import {SelectChangeEvent} from "@mui/material/Select";
 import typeTaskIcon from '../../../ui/assets/typeTaskIcon.svg';
 import organizationTaskIcon from '../../../ui/assets/organizationTaskIcon.svg';
 import specialistTaskIcon from '../../../ui/assets/specialistTaskIcon.svg';
-import statusIcon from '../assets/statusIcon.svg';
 import MyTextarea from "../../../ui/MyTextarea";
 import MyButton from "../../../ui/MyButton";
 import MyDatePicker from "../../../ui/MyDatePicker";
@@ -17,7 +16,6 @@ import {taskTypesApi} from "../../../api/taskTypesApi";
 import {organizationsApi} from "../../../api/organizationsApi";
 import {specialistsApi} from "../../../api/specialistsApi";
 import {isErrorWithMessage, isFetchBaseQueryError} from "../../../helpers/errors";
-import {TaskStatusesEnum} from "../enums/TaskStatusesEnum";
 import {useAppSelector} from "../../../hooks/redux";
 import {usersApi} from "../../../api/usersApi";
 import {ITask} from "../../../models/ITask";
@@ -35,7 +33,6 @@ const TaskUpdateWidget: FC = () => {
   const [organizationsOptions, setOrganizationsOptions] = useState<ISelectOptions[]>([]);
   const [specialistsOptions, setSpecialistsOptions] = useState<ISelectOptions[]>([]);
   const [usersOptions, setUsersOptions] = useState<ISelectOptions[]>([]);
-  const [statusOptions, setStatusOptions] = useState<ISelectOptions[]>([]);
 
   const {data: taskTypes} = taskTypesApi.useFetchAllTaskTypesQuery();
   const {data: organizations} = organizationsApi.useFetchAllOrganizationsQuery();
@@ -86,17 +83,6 @@ const TaskUpdateWidget: FC = () => {
   }, [users])
 
   useEffect(() => {
-    setStatusOptions(
-      [
-        {value: TaskStatusesEnum.InProgress, name: TaskStatusesEnum.InProgress},
-        {value: TaskStatusesEnum.Done, name: TaskStatusesEnum.Done},
-        {value: TaskStatusesEnum.Overdue, name: TaskStatusesEnum.Overdue},
-        {value: TaskStatusesEnum.Undone, name: TaskStatusesEnum.Undone},
-      ]
-    );
-  }, [])
-
-  useEffect(() => {
     if (task) {
       setName(task.name);
       setTaskType(task.taskType.id.toString());
@@ -114,7 +100,6 @@ const TaskUpdateWidget: FC = () => {
   const handleTaskOrganization = (event: SelectChangeEvent) => setOrganization(event.target.value);
   const handleTaskSpecialist = (event: SelectChangeEvent) => setSpecialist(event.target.value);
   const handleTaskUser = (event: SelectChangeEvent) => setUser(event.target.value);
-  const handleTaskStatus = (event: SelectChangeEvent) => setStatus(event.target.value);
   const handleTaskDateDue = (date: Date | null | undefined) => setDateDue(date);
   const handleTaskDescription = (event: ChangeEvent<HTMLTextAreaElement>) => setDescription(event.target.value);
 
@@ -204,7 +189,7 @@ const TaskUpdateWidget: FC = () => {
                           value={organization}
                           icon={organizationTaskIcon}/>
               </Grid>
-              <Grid item sm={4} xs={12}>
+              <Grid item sm={6} xs={12}>
                 {
                   type === 'user' ?
                     <MySelect label='Specialist'
@@ -223,26 +208,9 @@ const TaskUpdateWidget: FC = () => {
                 }
 
               </Grid>
-              <Grid item md={4} xs={12}>
+              <Grid item md={6} xs={12}>
                 <MyDatePicker label={'Due Date'} onChange={handleTaskDateDue} selected={dateDue}
                               placeholder="01/07/2023"></MyDatePicker>
-              </Grid>
-              <Grid item sm={4} xs={12}>
-                {
-                  status === TaskStatusesEnum.InProgress ?
-                    <MySelect label="Status"
-                              onChange={handleTaskStatus}
-                              options={statusOptions}
-                              value={status}
-                              icon={statusIcon}/>
-                    :
-                    <div className="task-option display-flex">
-                      <div className="option-label"><i className="icon"></i>Status :</div>
-                      <div className="option">
-                        <span className="badge badge-progress">{status}</span>
-                      </div>
-                    </div>
-                }
               </Grid>
               <Grid item sm={12} xs={12}>
                 <MyTextarea name="description" onChange={handleTaskDescription} value={description}
