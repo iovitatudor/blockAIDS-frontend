@@ -28,6 +28,7 @@ export const usersApi = createApi({
           bodyFormData.append('name', user.name);
           bodyFormData.append('email', user.email);
           bodyFormData.append('phone', user.phone);
+          bodyFormData.append('public_key', user.public_key);
           bodyFormData.append('gender', user.gender);
           if (user.birthdate) {
             bodyFormData.append('birthdate', user.birthdate);

@@ -5,7 +5,7 @@ import MyInput from "../../../ui/MyInput";
 import userIcon from "../assets/userIcon.svg";
 import emailIcon from "../assets/emailIcon.svg";
 import phoneIcon from "../assets/phoneIcon.svg";
-import calendarIcon from "../assets/calendarIcon.svg";
+import passwordIcon from "../assets/passwordIcon.png";
 import MyButton from "../../../ui/MyButton";
 import {useAppDispatch, useAppSelector} from "../../../hooks/redux";
 import {usersApi} from "../../../api/usersApi";
@@ -24,6 +24,7 @@ const ProfileUser: FC = () => {
   const [name, setName] = useState(authUser.name);
   const [email, setEmail] = useState(authUser.email);
   const [phone, setPhone] = useState('');
+  const [publicKey, setPublicKey] = useState('');
   const [birthdate, setBirthdate] = useState<Date | null | undefined>(undefined);
   const [gender, setGender] = React.useState('');
   const [avatar, setAvatar] = React.useState('');
@@ -36,6 +37,7 @@ const ProfileUser: FC = () => {
       setName(currentUser.name);
       setEmail(currentUser.email);
       setPhone(currentUser.phone);
+      setPublicKey(currentUser.public_key);
       setGender(currentUser.gender);
       setAvatar(currentUser.avatar);
       if (currentUser.birthdate) {
@@ -55,6 +57,7 @@ const ProfileUser: FC = () => {
   const handleEmail = (event: React.ChangeEvent<HTMLInputElement>) => setEmail(event.target.value);
 
   const handlePhone = (event: React.ChangeEvent<HTMLInputElement>) => setPhone(event.target.value);
+  const handlePublicKey = (event: React.ChangeEvent<HTMLInputElement>) => setPublicKey(event.target.value);
 
   const handleBirthdate = (date: Date | null | undefined) => setBirthdate(date);
 
@@ -66,7 +69,17 @@ const ProfileUser: FC = () => {
     event.preventDefault();
     setError('');
     try {
-      await updateUser({id: authUser.id, name, email, avatar: '', file, phone, gender, birthdate: birthdate?.toISOString()}).unwrap();
+      await updateUser({
+        id: authUser.id,
+        name,
+        email,
+        avatar: '',
+        file,
+        phone,
+        gender,
+        birthdate: birthdate?.toISOString(),
+        public_key: publicKey
+      }).unwrap();
       showSuccessAnimation();
     } catch (err) {
       if (isFetchBaseQueryError(err)) {
@@ -117,6 +130,14 @@ const ProfileUser: FC = () => {
                      icon={phoneIcon}
                      value={phone}
                      onChange={handlePhone}/>
+          </Grid>
+          <Grid item sm={6} xs={12} className="profile-field">
+            <MyInput type='tel'
+                     name='publicKey'
+                     label='Public key'
+                     icon={passwordIcon}
+                     value={publicKey}
+                     onChange={handlePublicKey}/>
           </Grid>
           <Grid item md={6} xs={12}>
             <MyDatePicker label={'Date of birth'} onChange={handleBirthdate} selected={birthdate}

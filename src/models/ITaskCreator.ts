@@ -8,5 +8,6 @@ export interface ITaskCreator {
   due_date?: string | null,
   status?: string,
   points?: number,
+  pay_signature?: string,
   description?: string
 }

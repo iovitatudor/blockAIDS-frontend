@@ -69,7 +69,7 @@ const TasksList: FC<ITasksList> = (props) => {
                 </div>
                 <div className="tasks-head-item md">Task Name</div>
                 <div className="tasks-head-item md">Due Date</div>
-                <div className="tasks-head-item sm">Tokens</div>
+                <div className="tasks-head-item sm">Reward</div>
                 <div className="tasks-head-item sm">Status</div>
                 <div className="tasks-head-item xs"></div>
               </div>

@@ -10,6 +10,7 @@ export interface ITask {
   dateDue: string,
   status: TaskStatusesEnum,
   points: number,
+  pay_signature: string,
   description: string,
   user: IUser,
   specialist: ISpecialist,

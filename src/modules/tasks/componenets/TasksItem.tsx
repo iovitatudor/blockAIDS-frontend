@@ -101,7 +101,7 @@ const TasksItem: FC<ITasksItemProps> = ({task}) => {
         }
         <div className="tasks-body-item md">{task.name}</div>
         <div className="tasks-body-item md">{new Date(task.dateDue).toDateString()}</div>
-        <div className="tasks-body-item sm">{task.taskType.reward} SOL</div>
+        <div className="tasks-body-item sm">{task.taskType.reward} AIDS</div>
         <div className="tasks-body-item sm">
           <Button
             id="status-button"
@@ -114,30 +114,51 @@ const TasksItem: FC<ITasksItemProps> = ({task}) => {
             {task.status === TaskStatusesEnum.InProgress && <span className="badge badge-progress">{task.status}</span>}
             {task.status === TaskStatusesEnum.Done && <span className="badge badge-done">{task.status}</span>}
             {task.status === TaskStatusesEnum.Overdue && <span className="badge badge-overdue">{task.status}</span>}
-            {task.status === TaskStatusesEnum.Undone && <span className="badge badge-undone">{task.status}</span>}
+            {task.status === TaskStatusesEnum.Cancelled && <span className="badge badge-undone">{task.status}</span>}
+            {task.status === TaskStatusesEnum.Disapproved && <span className="badge badge-undone">{task.status}</span>}
+            {task.status === TaskStatusesEnum.Assigned && <span className="badge badge-progress">{task.status}</span>}
+            {task.status === TaskStatusesEnum.Approved && <span className="badge badge-done">{task.status}</span>}
           </Button>
-          <Menu
-            id="status-menu"
-            anchorEl={statusEl}
-            open={statusOpen}
-            onClose={handleStatusClose}
-            MenuListProps={{
-              'aria-labelledby': 'basic-button',
-            }}
-          >
-            <MenuItem style={{fontSize: '12px'}} onClick={() => handleChangeStatus(TaskStatusesEnum.InProgress)}>
-              <span className="badge badge-progress" style={{width: '100px'}}>{TaskStatusesEnum.InProgress}</span>
-            </MenuItem>
-            <MenuItem style={{fontSize: '12px'}} onClick={() => handleChangeStatus(TaskStatusesEnum.Done)}>
-              <span className="badge badge-done" style={{width: '100px'}}>{TaskStatusesEnum.Done}</span>
-            </MenuItem>
-            <MenuItem style={{fontSize: '12px'}} onClick={() => handleChangeStatus(TaskStatusesEnum.Undone)}>
-              <span className="badge badge-undone" style={{width: '100px'}}>{TaskStatusesEnum.Undone}</span>
-            </MenuItem>
-            <MenuItem style={{fontSize: '12px'}} onClick={() => handleChangeStatus(TaskStatusesEnum.Overdue)}>
-              <span className="badge badge-overdue" style={{width: '100px'}}>{TaskStatusesEnum.Overdue}</span>
-            </MenuItem>
-          </Menu>
+          {
+            task.status !== TaskStatusesEnum.Approved &&
+              <Menu
+                  id="status-menu"
+                  anchorEl={statusEl}
+                  open={statusOpen}
+                  onClose={handleStatusClose}
+                  MenuListProps={{
+                    'aria-labelledby': 'basic-button',
+                  }}
+              >
+                  <MenuItem style={{fontSize: '12px'}} onClick={() => handleChangeStatus(TaskStatusesEnum.InProgress)}>
+                      <span className="badge badge-progress"
+                            style={{width: '100px'}}>{TaskStatusesEnum.InProgress}</span>
+                  </MenuItem>
+                  <MenuItem style={{fontSize: '12px'}} onClick={() => handleChangeStatus(TaskStatusesEnum.Assigned)}>
+                      <span className="badge badge-progress" style={{width: '100px'}}>{TaskStatusesEnum.Assigned}</span>
+                  </MenuItem>
+                  <MenuItem style={{fontSize: '12px'}} onClick={() => handleChangeStatus(TaskStatusesEnum.Done)}>
+                      <span className="badge badge-done" style={{width: '100px'}}>{TaskStatusesEnum.Done}</span>
+                  </MenuItem>
+                {
+                  type === 'specialist' &&
+                    <MenuItem style={{fontSize: '12px'}} onClick={() => handleChangeStatus(TaskStatusesEnum.Approved)}>
+                        <span className="badge badge-done" style={{width: '100px'}}>{TaskStatusesEnum.Approved}</span>
+                    </MenuItem>
+                }
+                  <MenuItem style={{fontSize: '12px'}} onClick={() => handleChangeStatus(TaskStatusesEnum.Disapproved)}>
+                      <span className="badge badge-undone"
+                            style={{width: '100px'}}>{TaskStatusesEnum.Disapproved}</span>
+                  </MenuItem>
+                  <MenuItem style={{fontSize: '12px'}} onClick={() => handleChangeStatus(TaskStatusesEnum.Cancelled)}>
+                      <span className="badge badge-undone" style={{width: '100px'}}>{TaskStatusesEnum.Cancelled}</span>
+                  </MenuItem>
+                  <MenuItem style={{fontSize: '12px'}} onClick={() => handleChangeStatus(TaskStatusesEnum.Overdue)}>
+                      <span className="badge badge-overdue" style={{width: '100px'}}>{TaskStatusesEnum.Overdue}</span>
+                  </MenuItem>
+              </Menu>
+          }
+
         </div>
         <div className="tasks-body-item xs">
           <div className="details">
@@ -218,7 +239,7 @@ const TasksItem: FC<ITasksItemProps> = ({task}) => {
             <div className="tasks-item-organization">{task.organization.name}</div>
           </div>
           <div className="options-area">
-            <div className="tasks-item-points">{task.taskType.reward} SOL</div>
+            <div className="tasks-item-points">{task.taskType.reward} AIDS</div>
             <div className="tasks-body-item">
               <div className="details">
                 <Button
@@ -289,7 +310,8 @@ const TasksItem: FC<ITasksItemProps> = ({task}) => {
               onClick={handleStatusClick}
               style={{textTransform: 'none'}}
             >
-              {task.status === TaskStatusesEnum.InProgress && <span className="badge badge-progress">{task.status}</span>}
+              {task.status === TaskStatusesEnum.InProgress &&
+                  <span className="badge badge-progress">{task.status}</span>}
               {task.status === TaskStatusesEnum.Done && <span className="badge badge-done">{task.status}</span>}
               {task.status === TaskStatusesEnum.Overdue && <span className="badge badge-overdue">{task.status}</span>}
               {task.status === TaskStatusesEnum.Undone && <span className="badge badge-undone">{task.status}</span>}
