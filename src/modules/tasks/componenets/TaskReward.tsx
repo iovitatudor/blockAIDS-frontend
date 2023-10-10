@@ -9,8 +9,6 @@ import {tasksApi} from "../../../api/tasksApi";
 import {useAppSelector} from "../../../hooks/redux";
 import {setNotification} from "../services/notifications";
 import {notificationsApi} from "../../../api/notificationsApi";
-import {CircularProgress} from "@mui/material";
-import {green} from "@mui/material/colors";
 import Loading from "../../../components/Loading";
 
 type DisplayEncoding = "utf8" | "hex";
@@ -74,9 +72,9 @@ const TaskReward: FC<ITaskRewardProps> = ({user, task}) => {
       const body = {
         recipientPublicKey: user.public_key,
         amount: Number(task.taskType.reward),
-        token: 'AIDS',
+        token: `${process.env.REACT_APP_TOKEN_CURRENCY}`,
       }
-      const response = await axios.post('http://localhost:4000/api/blockchain/transfer', body, {
+      const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/blockchain/transfer`, body, {
         headers: {
           "Content-Type": "application/json"
         }
@@ -141,7 +139,7 @@ const TaskReward: FC<ITaskRewardProps> = ({user, task}) => {
           <div>
               <h3>Approved Task:</h3>
               <h4>Blockchain Signature: </h4>
-              <a href={`https://explorer.solana.com/tx/${task.pay_signature}?cluster=testnet`} target="_blank">
+              <a href={`https://explorer.solana.com/tx/${task.pay_signature}?cluster=testnet`} target="_blank" rel="noreferrer">
                   <small style={{fontSize: '12px'}}>{task.pay_signature}</small>
               </a>
           </div>

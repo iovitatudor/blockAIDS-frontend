@@ -17,7 +17,7 @@ interface ITasksList {
 
 const TasksList: FC<ITasksList> = (props) => {
   const {type, authUser} = useAppSelector(state => state.authReducer);
-  const { heading} = props;
+  const {heading} = props;
   const [filtredTasks, setFiltredTasks] = useState<ITask[] | undefined>();
   let fetchTasks = tasksApi.useFetchAllTasksByUserIdQuery;
   if (type === 'specialist') {

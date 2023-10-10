@@ -234,12 +234,27 @@
   color: #13C2BD;
 }
 
+.highlightAssigned {
+  background-color: #D1FAF9;
+  color: #13C2BD;
+}
+
 .highlightDone {
   background-color: $green15;
   color: $green3;
 }
 
-.highlightUndone {
+.highlightApproved {
+  background-color: $green15;
+  color: $green3;
+}
+
+.highlightCancelled {
+  background-color: $red15;
+  color: $red3;
+}
+
+.highlightDisapproved {
   background-color: $red15;
   color: $red3;
 }

@@ -1,4 +1,4 @@
-import {IFooterMenus} from "../modules/footer/types/IFooterMenu";
+import {IFooterMenus} from "../../modules/footer/types/IFooterMenu";
 
 export const footerMenus:IFooterMenus[] = [
   {

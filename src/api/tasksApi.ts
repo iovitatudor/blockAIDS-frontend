@@ -5,7 +5,7 @@ import {ITask} from "../models/ITask";
 export const tasksApi = createApi({
   reducerPath: 'taskAPI',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'http://localhost:4000/api'
+    baseUrl: `${process.env.REACT_APP_BACKEND_URL}/api`
   }),
   tagTypes: ['Task'],
   endpoints: (build) => ({

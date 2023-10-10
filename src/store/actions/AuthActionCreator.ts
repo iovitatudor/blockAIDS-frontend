@@ -2,7 +2,7 @@ import {createAsyncThunk} from "@reduxjs/toolkit";
 import {IAuthLogin, IAuthRegister, IAuthResponse} from "../../models/IAuth";
 import axios, {AxiosError} from "axios";
 
-const backendURL = "http://localhost:4000/api";
+const backendURL = `${process.env.REACT_APP_BACKEND_URL}/api`;
 export const register = createAsyncThunk(
   'specialistAuth/register',
   async (data: IAuthRegister, thunkAPI) => {

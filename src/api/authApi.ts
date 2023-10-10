@@ -5,7 +5,7 @@ import {ILogin, ILoginClientResponse, ILoginSpecialistResponse} from "../models/
 export const authApi = createApi({
   reducerPath: 'auth',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'http://localhost:4000/api/auth'
+    baseUrl: `${process.env.REACT_APP_BACKEND_URL}/api/auth`
   }),
   tagTypes: ['Auth'],
   endpoints: (build) => ({

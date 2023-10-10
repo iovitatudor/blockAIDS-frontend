@@ -1,8 +1,5 @@
 import {ITask} from "../../../models/ITask";
 import {NotificationStatusEnum} from "../../notofications/enums/NotificationStatusEnum";
-import {notificationsApi} from "../../../api/notificationsApi";
-
-// const [createNotification] = notificationsApi.useCreateNotificationMutation();
 
 export const setNotification = (task: ITask, messageAction: string, type: 'specialist' | 'user', createNotification) => {
   const userMessage =

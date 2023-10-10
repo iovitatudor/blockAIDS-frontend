@@ -2,13 +2,13 @@ import React, {FC, useState} from "react";
 import {Box, Button, Drawer} from "@mui/material";
 import MenuIcon from '@mui/icons-material/Menu';
 import {Sidebar} from "../modules/sidebar";
-import {getMenus} from "../api/menu";
+import {getMenus} from "../models/Mocks/Menu";
 import MenuIcon1 from '../styles/assets/MenuIcon.svg';
 import {notificationsApi} from "../api/notificationsApi";
 import {useAppSelector} from "../hooks/redux";
 
 const SidebarDrawer: FC = () => {
-  const {isLogged, authUser, type} = useAppSelector(state => state.authReducer)
+  const {authUser, type} = useAppSelector(state => state.authReducer)
 
   let fetchNotifications = notificationsApi.useFetchScheduledNotificationsByUserIdQuery;
 

@@ -1,7 +1,6 @@
 @import '../../../styles/variables';
 @import '../../../styles/fonts';
 
-
 .tasks-area {
   margin-top: 40px;
   border-radius: 8px;
@@ -424,9 +423,17 @@
     justify-content: center;
 
     .tasks-filter {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      width: 100%;
+      justify-content: space-around;
+
       .filter-option {
-        padding: 5px;
+        padding: 5px 20px;
         font-size: 12px;
+        margin-bottom: 13px;
+        text-align: center;
       }
     }
   }

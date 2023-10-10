@@ -17,7 +17,7 @@ const NotificationWidget: FC = () => {
   const {data: notifications, refetch} = fetchNotifications(authUser.id);
   const [updateNotification] = notificationsApi.useUpdateNotificationMutation();
 
-  useEffect(()=> {
+  useEffect(() => {
     refetch();
   }, [])
 

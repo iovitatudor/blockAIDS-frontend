@@ -10,9 +10,8 @@ import {
   DialogTitle,
   IconButton,
   List,
-  ListItem, ListItemAvatar, ListItemText, Button,
+  ListItem, ListItemAvatar, ListItemText, Button, Divider,
 } from "@mui/material";
-import LinkIcon from '@mui/icons-material/Link';
 import CloseIcon from '@mui/icons-material/Close';
 import {tasksApi} from "../../../api/tasksApi";
 import {useAppSelector} from "../../../hooks/redux";
@@ -112,23 +111,23 @@ const TasksCalendar: FC = () => {
               <List dense={true} disablePadding={true}>
                 {
                   foundTasks && foundTasks.map(task => (
-                    <Link to={`/tasks/view/${task.id}`}>
+                    <><br/><Link to={`/tasks/view/${task.id}`}>
                       <ListItem
                         disablePadding={true}
-                        secondaryAction={
-                          <IconButton edge="end" aria-label="delete">
-                            {<Link to={`/tasks/view/${task.id}`}><LinkIcon/></Link>}
-                          </IconButton>}>
+                        secondaryAction={<IconButton edge="end" aria-label="delete"></IconButton>}>
                         <ListItemAvatar>
                           <Avatar sx={{width: 32, height: 32}}
-                                  src={`http://localhost:4000/${task.specialist.avatar}`}></Avatar>
+                                  src={`${process.env.REACT_APP_BACKEND_URL}/${task.specialist.avatar}`}></Avatar>
                         </ListItemAvatar>
                         <ListItemText
                           primary={task.name}
-                          secondary={task.specialist.name}
-                        />
+                          secondary={task.specialist.name}/>
+                        <ListItemText
+                          style={{textAlign: 'center'}}
+                          primary={task.status}
+                          secondary={`${task.taskType.reward} ${process.env.REACT_APP_TOKEN_CURRENCY}`}/>
                       </ListItem>
-                    </Link>
+                    </Link><br/><Divider/></>
                   ))
                 }
               </List>

@@ -1,12 +1,11 @@
 import {combineReducers, configureStore} from "@reduxjs/toolkit";
+import authReducer from "./reducers/AuthSlice";
 import {taskTypesApi} from "../api/taskTypesApi";
 import {organizationsApi} from "../api/organizationsApi";
 import {specialistsApi} from "../api/specialistsApi";
 import {usersApi} from "../api/usersApi";
 import {authApi} from "../api/authApi";
 import {tasksApi} from "../api/tasksApi";
-import userReducer from './reducers/UserSlice';
-import authReducer  from "./reducers/AuthSlice";
 import {notificationsApi} from "../api/notificationsApi";
 
 const rootReducer = combineReducers({

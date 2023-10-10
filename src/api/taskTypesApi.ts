@@ -4,7 +4,7 @@ import {ITaskType} from "../models/ITaskType";
 export const taskTypesApi = createApi({
   reducerPath: 'taskTypeAPI',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'http://localhost:4000/api'
+    baseUrl: `${process.env.REACT_APP_BACKEND_URL}/api`
   }),
   tagTypes: ['TaskType'],
   endpoints: (build) => ({

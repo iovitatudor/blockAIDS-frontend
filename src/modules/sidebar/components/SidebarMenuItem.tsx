@@ -5,6 +5,7 @@ import {ISidebarMenu} from "../types/ISidebarMenu";
 interface ISidebarMenuItem {
   menu: ISidebarMenu
 }
+
 const SidebarMenuItem: FC<ISidebarMenuItem> = ({menu}) => {
   return (
     <Link to={menu.url}>

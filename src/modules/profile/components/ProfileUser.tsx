@@ -17,9 +17,9 @@ import {isErrorWithMessage, isFetchBaseQueryError} from "../../../helpers/errors
 const ProfileUser: FC = () => {
   const dispatch = useAppDispatch();
 
-  const {authUser, type} = useAppSelector(state => state.authReducer)
+  const {authUser} = useAppSelector(state => state.authReducer)
   const {data: currentUser} = usersApi.useFetchUserByIdQuery(authUser.id);
-  const [updateUser, {}] = usersApi.useUpdateUserMutation();
+  const [updateUser] = usersApi.useUpdateUserMutation();
 
   const [name, setName] = useState(authUser.name);
   const [email, setEmail] = useState(authUser.email);
@@ -96,7 +96,8 @@ const ProfileUser: FC = () => {
       {isSaved && <DoneAlert/>}
       <div className="profile-picture">
         <div className="avatar">
-          <Avatar src={`http://localhost:4000/${avatar}`} sx={{width: '120px', height: '120px'}}></Avatar>
+          <Avatar src={`${process.env.REACT_APP_BACKEND_URL}/${avatar}`}
+                  sx={{width: '120px', height: '120px'}}></Avatar>
         </div>
         <div className="upload-form">
           <h3>Profile Picture</h3>

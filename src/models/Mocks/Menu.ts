@@ -1,4 +1,4 @@
-import {ISidebarMenu} from "../modules/sidebar";
+import {ISidebarMenu} from "../../modules/sidebar";
 
 export const getMenus = (notificationsQty: number = 0) => {
   const menus: ISidebarMenu[] = [

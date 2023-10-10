@@ -84,7 +84,7 @@ const TasksItem: FC<ITasksItemProps> = ({task}) => {
             <div className="tasks-body-item lg">
                 <Avatar className="avatar"
                         alt={task.user.name}
-                        src={`http://localhost:4000/${task.user.avatar}`}
+                        src={`${process.env.REACT_APP_BACKEND_URL}/${task.user.avatar}`}
                         sx={{width: 32, height: 32}}/>
               {task.user.name}
             </div>
@@ -94,14 +94,14 @@ const TasksItem: FC<ITasksItemProps> = ({task}) => {
             <div className="tasks-body-item lg">
                 <Avatar className="avatar"
                         alt={task.specialist.name}
-                        src={`http://localhost:4000/${task.specialist.avatar}`}
+                        src={`${process.env.REACT_APP_BACKEND_URL}/${task.specialist.avatar}`}
                         sx={{width: 32, height: 32}}/>
               {task.specialist.name}
             </div>
         }
         <div className="tasks-body-item md">{task.name}</div>
         <div className="tasks-body-item md">{new Date(task.dateDue).toDateString()}</div>
-        <div className="tasks-body-item sm">{task.taskType.reward} AIDS</div>
+        <div className="tasks-body-item sm">{task.taskType.reward} {process.env.REACT_APP_TOKEN_CURRENCY}</div>
         <div className="tasks-body-item sm">
           <Button
             id="status-button"
@@ -224,13 +224,13 @@ const TasksItem: FC<ITasksItemProps> = ({task}) => {
           <div className="avatar-area">
             {
               type === "specialist" &&
-                <Avatar className="avatar" alt={task.user.name} src={`http://localhost:4000/${task.user.avatar}`}
+                <Avatar className="avatar" alt={task.user.name} src={`${process.env.REACT_APP_BACKEND_URL}/${task.user.avatar}`}
                         sx={{width: 56, height: 56}}/>
             }
             {
               type === "user" &&
                 <Avatar className="avatar" alt={task.specialist.name}
-                        src={`http://localhost:4000/${task.specialist.avatar}`}
+                        src={`${process.env.REACT_APP_BACKEND_URL}/${task.specialist.avatar}`}
                         sx={{width: 56, height: 56}}/>
             }
           </div>
@@ -239,7 +239,7 @@ const TasksItem: FC<ITasksItemProps> = ({task}) => {
             <div className="tasks-item-organization">{task.organization.name}</div>
           </div>
           <div className="options-area">
-            <div className="tasks-item-points">{task.taskType.reward} AIDS</div>
+            <div className="tasks-item-points">{task.taskType.reward} {process.env.REACT_APP_TOKEN_CURRENCY}</div>
             <div className="tasks-body-item">
               <div className="details">
                 <Button

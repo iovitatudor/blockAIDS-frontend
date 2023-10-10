@@ -3,7 +3,6 @@ import MyInput from "../../../ui/MyInput";
 import '../styles/Search.scss';
 import searchIcon from "../assets/search-icon.png";
 
-
 const SearchWidget: FC = () => {
   const [searchField, setSearchField] = useState('')
 

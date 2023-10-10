@@ -14,31 +14,21 @@ const SidebarProfile: FC = () => {
 
   return (
     <>
-      {/*{!isLogged &&*/}
-      {/*    <Grid container spacing={0}*/}
-      {/*          direction="column"*/}
-      {/*          alignItems="center">*/}
-      {/*        <Grid item xs={12} className="text-center">*/}
-      {/*            <Link to="/auth">*/}
-      {/*                <MyButton className="btn-sm">Sign In</MyButton>*/}
-      {/*            </Link>*/}
-      {/*        </Grid>*/}
-      {/*    </Grid>*/}
-      {/*}*/}
-      {isLogged &&
+      {
+        isLogged &&
           <div className="profile-wrapper">
               <Grid container spacing={0}>
                   <Grid item xs={3} className="avatar-area">
                       <Link to="/profile">
                           <Avatar alt={authUser.name}
-                                  src={`http://localhost:4000/${authUser.avatar}`}
+                                  src={`${process.env.REACT_APP_BACKEND_URL}/${authUser.avatar}`}
                                   sx={{width: 60, height: 60}}/>
                       </Link>
                   </Grid>
                   <Grid item xs={9} className="info-area">
                       <p className="user-name">
                           <Link to="/profile">
-                            {authUser.name} ({type})
+                            {authUser.name}
                           </Link>
                       </p>
                       <p>
@@ -49,7 +39,6 @@ const SidebarProfile: FC = () => {
                 {/*<Grid item xs={2} className="arrow-area">*/}
                 {/*    <p className="arrow"></p>*/}
                 {/*</Grid>*/}
-
               </Grid>
           </div>
       }
