@@ -138,6 +138,7 @@ const ProfileUser: FC = () => {
                      label='Public key'
                      icon={passwordIcon}
                      value={publicKey}
+                     disabled={true}
                      onChange={handlePublicKey}/>
           </Grid>
           <Grid item md={6} xs={12}>

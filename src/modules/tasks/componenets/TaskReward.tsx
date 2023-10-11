@@ -1,5 +1,4 @@
 import {FC, useEffect, useState} from "react";
-import {PublicKey, Transaction} from "@solana/web3.js";
 import MyButton from "../../../ui/MyButton";
 import axios from "axios";
 import {IUser} from "../../../models/IUser";
@@ -10,34 +9,7 @@ import {useAppSelector} from "../../../hooks/redux";
 import {setNotification} from "../services/notifications";
 import {notificationsApi} from "../../../api/notificationsApi";
 import Loading from "../../../components/Loading";
-
-type DisplayEncoding = "utf8" | "hex";
-type PhantomEvent = "disconnect" | "connect" | "accountChanged";
-type PhantomRequestMethod =
-  | "connect"
-  | "disconnect"
-  | "signTransaction"
-  | "signAllTransactions"
-  | "signMessage";
-
-interface ConnectOpts {
-  onlyIfTrusted: boolean;
-}
-
-interface PhantomProvider {
-  publicKey: PublicKey | null;
-  isConnected: boolean | null;
-  signTransaction: (transaction: Transaction) => Promise<Transaction>;
-  signAllTransactions: (transactions: Transaction[]) => Promise<Transaction[]>;
-  signMessage: (
-    message: Uint8Array | string,
-    display?: DisplayEncoding
-  ) => Promise<any>;
-  connect: (opts?: Partial<ConnectOpts>) => Promise<{ publicKey: PublicKey }>;
-  disconnect: () => Promise<void>;
-  on: (event: PhantomEvent, handler: (args: any) => void) => void;
-  request: (method: PhantomRequestMethod, params: any) => Promise<unknown>;
-}
+import {PhantomProvider} from "../../../models/IPhantomProvider";
 
 interface ITaskRewardProps {
   user: IUser;

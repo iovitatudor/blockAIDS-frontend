@@ -4,4 +4,5 @@ export interface ISidebarMenu {
   icon: string,
   notification: number,
   url: string,
+  className: string,
 }
