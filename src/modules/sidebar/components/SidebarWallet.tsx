@@ -5,6 +5,7 @@ import {PhantomProvider} from "../../../models/IPhantomProvider";
 import {usersApi} from "../../../api/usersApi";
 import {clusterApiUrl, Connection, GetProgramAccountsFilter} from "@solana/web3.js";
 import {TOKEN_PROGRAM_ID} from "@solana/spl-token";
+import RefreshIcon from '@mui/icons-material/Refresh';
 
 const SidebarWallet: FC = () => {
   const {authUser} = useAppSelector(state => state.authReducer)
@@ -79,7 +80,6 @@ const SidebarWallet: FC = () => {
         const parsedAccountInfo = account.account.data;
         const tokenBalance: number = parsedAccountInfo["parsed"]["info"]["tokenAmount"]["uiAmount"];
         setBalance(tokenBalance);
-        // console.log(tokenBalance);
       });
     } catch (e) {
       console.error(e);
@@ -102,7 +102,10 @@ const SidebarWallet: FC = () => {
 
       {
         connected &&
-          <div>BALANCE: {balance} AIDS</div>
+          <div className="wallet-balance-area">
+              BALANCE: {balance} AIDS
+              <RefreshIcon sx={{width: '20px', height: '20px'}} onClick={connectWallet}/>
+          </div>
       }
     </>
   );
