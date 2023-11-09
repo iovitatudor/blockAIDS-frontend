@@ -111,7 +111,7 @@ const TaskReward: FC<ITaskRewardProps> = ({user, task}) => {
           <div>
               <h3>Approved Task:</h3>
               <h4>Blockchain Signature: </h4>
-              <a href={`https://explorer.solana.com/tx/${task.pay_signature}?cluster=testnet`} target="_blank" rel="noreferrer">
+              <a href={`https://solscan.io//tx/${task.pay_signature}`} target="_blank" rel="noreferrer">
                   <small style={{fontSize: '12px'}}>{task.pay_signature}</small>
               </a>
           </div>

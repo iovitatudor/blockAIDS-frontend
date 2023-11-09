@@ -62,7 +62,7 @@ const SidebarWallet: FC = () => {
 
   const getBalance = async (wallet) => {
     try {
-      const solana = new Connection(clusterApiUrl("testnet"), "confirmed");
+      const solana = new Connection(clusterApiUrl("mainnet-beta"), "confirmed");
       const filters: GetProgramAccountsFilter[] = [
         {
           dataSize: 165
